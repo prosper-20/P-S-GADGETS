@@ -5,3 +5,6 @@ from .models import Product
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["title", "brand", "model", "price"]
+
+
+admin.site.register(Product, ProductAdmin)
