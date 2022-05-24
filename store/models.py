@@ -5,11 +5,12 @@ from django.db import models
 
 
 CATEGORY_CHOICES = (
-    ('P', 'Snacks'),
-    ('T', 'Entre'),
-    ('G', 'Drink'),
-    ('A', 'Appetizer'),
-    ('MC', 'Main Course')
+    ('P', 'Phones'),
+    ('T', 'Tablets'),
+    ('C', 'Computing'),
+    ('E', 'Electronics'),
+    ('H', 'Home & Kitchen'),
+    ('A', 'Accessories')
 )
 
 LABEL_CHOICES = (
