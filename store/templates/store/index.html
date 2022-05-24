@@ -243,16 +243,18 @@
 			<div class="carousel-inner">
 			  <div class="item active">
 			  <ul class="thumbnails">
+				  {% for product in products %}
 				<li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
-					<a href="product_details.html"><img src="{% static 'store/themes/images/products/b1.jpg' %}" alt=""></a>
+					<a href="product_details.html"><img src="{{ product.image.url }}" alt=""></a>
 					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+					  <h5>{{ product.title }}</h5>
+					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{ product.price }}</span></h4>
 					</div>
 				  </div>
 				</li>
+				{% endfor %}
 				<li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
