@@ -22,12 +22,16 @@ LABEL_CHOICES = (
 class Product(models.Model):
     title = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
+    model = models.CharField(max_length=250, blank=True, null=True)
     released_on = models.CharField(max_length=100)
     dimensions = models.CharField(max_length=100)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
     label =  models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to="product_images")
+
+    def __str__(self):
+        return self.title
