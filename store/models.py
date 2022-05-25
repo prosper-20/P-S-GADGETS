@@ -48,8 +48,9 @@ class Product(models.Model):
         return self.title
 
 
-class OrederItem(models.Nodel):
-    pass
+class OrederItem(models.Model):
+    item = models.ForeignKey(Product, on_delete=models.CASCADE)
+
 
 
 class Order(models.Model):
