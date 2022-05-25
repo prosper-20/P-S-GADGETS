@@ -31,8 +31,9 @@ class Home(ListView):
 class Detail(DetailView):
     model = Product
     template_name = "store/product-details.html"
+    context_object_name = "product"
 
-def add_to_cart_url(request, slug):
+def add_to_cart(request, slug):
     item = get_object_or_404(Product, slug=slug)
     order_item = OrderItem.objects.create(item=item)
     order_qs = Order.objects.filter(user=request.user, ordered=False)
@@ -47,5 +48,5 @@ def add_to_cart_url(request, slug):
             order = Order.objects.create(user=request.user,
             ordered_date=ordered_date)
             order.items.add(order_item)
-        return redirect("product-detail", slug=slug)
+    return redirect("product-detail", slug=slug)
 
