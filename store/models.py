@@ -24,6 +24,8 @@ class Product(models.Model):
     title = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=250, blank=True, null=True)
+    features = models.TextField(blank=True, null=True)
+    stock = models.IntegerField(default=100)
     released_on = models.CharField(max_length=100)
     dimensions = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -33,6 +35,7 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to="product_images")
+
 
     def get_absolute_url(self):
         return reverse("product-detail", kwargs={
