@@ -33,9 +33,9 @@ class StorePage(TestCase):
     #     self.assertEqual(response.status_code, 200)
 
     def test_productpage_template_used(self):
-        response = self.client.get("product-detail")
-        self.assertTemplateUsed(response.status_code, 'store/product-details.html')
+        response = self.client.get(reverse("product-detail"))
+        self.assertTemplateUsed(response, 'store/product-details.html')
 
     def test_productpage_contains(self):
-        response = self.client.get("product-detail")
-        self.assertContains(response.status_code, '{{ product.title }}')
+        response = self.client.get(reverse("product-detail"))
+        self.assertContains(response, "P's GADGETS")
