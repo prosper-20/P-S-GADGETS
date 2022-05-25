@@ -36,6 +36,7 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to="product_images")
+    quantity = models.IntegerField(default=1)
 
 
     def get_absolute_url(self):
@@ -48,14 +49,14 @@ class Product(models.Model):
         return self.title
 
 
-class OrederItem(models.Model):
+class OrderItem(models.Model):
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    items = models.ManyToManyField(OrederItem)
+    items = models.ManyToManyField(OrderItem)
     strat_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Order, OrederItem
+from .models import Product, Order, OrderItem
 
 # Register your models here.
 
@@ -9,5 +9,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
-admin.site.register(OrederItem)
+admin.site.register(OrderItem)
 admin.site.register(Order)
