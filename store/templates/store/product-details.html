@@ -218,7 +218,12 @@
 				<hr class="soft"/>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
-					<label class="control-label"><span><span>&#8358;</span>{{ product.price }}</span></label>
+					<label class="control-label"><span><span>&#8358;</span>
+						{% if product.discount_price %}
+						  {{ product.discount_price}}
+						  {% else %}
+						  {{ product.price }}
+						{% endif %}</span></label>
 					<div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
 					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
