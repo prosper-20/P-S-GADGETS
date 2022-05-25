@@ -28,7 +28,7 @@ class Product(models.Model):
     stock = models.IntegerField(default=100)
     released_on = models.CharField(max_length=100)
     dimensions = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=15, decimal_places=2)
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
     label =  models.CharField(choices=LABEL_CHOICES, max_length=1)
