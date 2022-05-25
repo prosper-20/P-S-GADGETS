@@ -215,9 +215,11 @@
 			<div class="span6">
 				<h3>{{ product.title }} </h3>
 				<small>- {{ product.get_category_display }}</small>
-				<a class="btn btn-large btn-primary pull-right" href="{{ product.get_add_to_cart_url }}">Add to cart<i class=" icon-shopping-cart"></i></a>
+				
 				<!-- REMOVE FROM CART -->
-				<a class="btn btn-large btn-primary pull-right" href="{{ product.get_remove_from_cart_url }}">Remove from cart<i class=" icon-shopping-cart"></i></a>
+				<a class="btn btn-medium btn-danger pull-right" href="{{ product.get_remove_from_cart_url }}">Remove from cart<i class=" icon-shopping-cart"></i></a>
+				<!-- ADD TO CART -->
+				<a class="btn btn-medium btn-primary pull-right " href="{{ product.get_add_to_cart_url }}">Add to cart<i class=" icon-shopping-cart"></i></a>
 				<hr class="soft"/>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">

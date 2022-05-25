@@ -49,6 +49,11 @@ class Product(models.Model):
             "slug": self.slug
         })
 
+    def get_remove_from_cart_url(self):
+        return reverse('remove-from-cart', kwargs={
+            "slug": self.slug
+        }) 
+
 
     def __str__(self):
         return self.title
