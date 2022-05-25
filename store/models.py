@@ -1,5 +1,6 @@
 from operator import mod
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -32,6 +33,14 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to="product_images")
+
+    def get_absolute_url(self):
+        return reverse("product-detail", kwargs={
+            'slug': self.slug
+        })
+
+
+
 
     def __str__(self):
         return self.title

@@ -247,10 +247,10 @@
 				<li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
-					<a href="product_details.html"><img src="{{ product.image.url }}" alt=""></a>
+					<a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a>
 					<div class="caption">
 					  <h5>{{ product.title }}</h5>
-					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">${{ product.price }}</span></h4>
+					  <h4><a class="btn" href="{{ product.get_absolute_url }}">VIEW</a> <span class="pull-right">${{ product.price }}</span></h4>
 					</div>
 				  </div>
 				</li>
