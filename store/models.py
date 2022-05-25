@@ -36,12 +36,17 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to="product_images")
-    quantity = models.IntegerField(default=1)
+    
 
 
     def get_absolute_url(self):
         return reverse("product-detail", kwargs={
             'slug': self.slug
+        })
+
+    def get_add_to_cart_url(self):
+        return reverse('product-detail', kwargs={
+            "slug": self.slug
         })
 
 
@@ -51,6 +56,7 @@ class Product(models.Model):
 
 class OrderItem(models.Model):
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
 
 
