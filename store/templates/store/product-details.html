@@ -224,10 +224,11 @@
 						  {% else %}
 						  {{ product.price }}
 						{% endif %}</span></label>
-					<div class="controls">
+					<!-- <div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
 					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
-					</div>
+					</div> -->
+					<a class="btn btn-large btn-primary pull-right" href="{{ product.get_add_to_cart_url }}">Add to cart <i class=" icon-shopping-cart"></i></a>
 				  </div>
 				</form>
 				

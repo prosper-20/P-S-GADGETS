@@ -58,6 +58,8 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
+    def __str__(self):
+        return f"{self.item.quantity} of {self.item.title}"
 
 
 class Order(models.Model):
