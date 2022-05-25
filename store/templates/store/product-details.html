@@ -214,7 +214,8 @@
 			</div>
 			<div class="span6">
 				<h3>{{ product.title }} </h3>
-				<small>- {{ product.category }}</small>
+				<small>- {{ product.get_category_display }}</small>
+				<a class="btn btn-large btn-primary pull-right" href="{{ product.get_add_to_cart_url }}">Add to cart<i class=" icon-shopping-cart"></i></a>
 				<hr class="soft"/>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
@@ -231,7 +232,7 @@
 					
 				  </div>
 				</form>
-				<a class="btn btn-large btn-primary pull-right" href="{{ product.get_add_to_cart_url }}">Add to cart<i class=" icon-shopping-cart"></i></a>
+				
 				
 				<hr class="soft"/>
 				<h4>{{ product.stock }} items in stock</h4>
