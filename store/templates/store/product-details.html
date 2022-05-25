@@ -216,6 +216,8 @@
 				<h3>{{ product.title }} </h3>
 				<small>- {{ product.get_category_display }}</small>
 				<a class="btn btn-large btn-primary pull-right" href="{{ product.get_add_to_cart_url }}">Add to cart<i class=" icon-shopping-cart"></i></a>
+				<!-- REMOVE FROM CART -->
+				<a class="btn btn-large btn-primary pull-right" href="{{ product.get_remove_from_cart_url }}">Remove from cart<i class=" icon-shopping-cart"></i></a>
 				<hr class="soft"/>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
