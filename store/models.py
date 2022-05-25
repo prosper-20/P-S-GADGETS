@@ -59,7 +59,7 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"{self.item.quantity} of {self.item.title}"
+        return f"{self.quantity} of {self.item.title}"
 
 
 class Order(models.Model):

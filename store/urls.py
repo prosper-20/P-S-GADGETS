@@ -1,10 +1,10 @@
 from audioop import add
 from django.urls import path
 from . import views
-from .views import add_to_cart
+from .views import add_to_cart_url
 
 urlpatterns = [
     path("", views.Home.as_view(), name="home"),
     path("product/<slug:slug>/", views.Detail.as_view(), name="product-detail"),
-    path("add-to-cart/<slug>/", add_to_cart, name="add-to-cart")
+    path("add-to-cart/<slug>/", add_to_cart_url, name="add-to-cart")
 ]
