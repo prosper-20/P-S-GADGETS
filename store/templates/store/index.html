@@ -251,12 +251,12 @@
 					<div class="caption">
 					  <h5>{{ product.title }}</h5>
 					  <h4><a class="btn" href="{{ product.get_absolute_url }}">VIEW</a> <span class="pull-right">
-						  $
+						<span>&#8358;</span>
 						  {% if product.discount_price %}
 						  {{ product.discount_price}}
 						  {% else %}
 						  {{ product.price }}
-						{% endif %}</span></h4>
+						{% endif %}</h4>
 					</div>
 				  </div>
 				</li>
@@ -281,7 +281,7 @@
 					</div>
 				  </div>
 				</li>
-				<li class="span3">
+				<!-- <li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
 					<a href="product_details.html"><img src="{% static 'store/themes/images/products/b4.jpg' %}" alt=""></a>
@@ -290,7 +290,7 @@
 					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
 					</div>
 				  </div>
-				</li>
+				</li> -->
 			  </ul>
 			  </div>
 			   <div class="item">
