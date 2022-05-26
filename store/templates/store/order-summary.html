@@ -166,7 +166,7 @@
                         {% else %}
                         <span>&#8358;</span>{{ order_item.get_total_item_price }}
                         {% endif %}
-                        <a style="color: red;" href=""><i class="fas fa-trash float-right"></i></a>
+                        <a style="color: red;" href="{% url 'remove-from-cart' order_item.item.slug %}"><i class="fas fa-trash float-right"></i></a>
                     </td>
                 </tr>
             {% empty %}
