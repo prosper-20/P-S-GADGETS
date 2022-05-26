@@ -23,7 +23,7 @@ class CheckoutView(View):
             'form': form
         }
 
-        return render(self.request, "store/checkout.html")
+        return render(self.request, "store/checkout-page.html")
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
