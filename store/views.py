@@ -1,10 +1,12 @@
 import imp
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Order, OrderItem
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -15,9 +17,16 @@ class Home(ListView):
     context_object_name = "products"
 
 
-class OrderSummaryView(DetailView):
-    model = Order
-    template_name = "store/order_summary.html"
+class OrderSummaryView(LoginRequiredMixin, View):
+    def get(self, *args, **kwargs):
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            return render(self.request, "store/order-summary.html" )
+        except ObjectDoesNotExist:
+            messages.error(self.request, 'You do not have an active order')
+            return redirect('/')
+        
+     
 
 
 # def home(request):

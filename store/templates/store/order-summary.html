@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_template_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>P's Diner | order-summary </title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -14,7 +15,7 @@
   <!-- Material Design Bootstrap -->
   <link href="{% static 'store/css/mdb.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
-  <link href="{% static 'store/css/style.min.css'%}" rel="stylesheet">
+  <link href="{% static 'store/css/style.min.css' %}" rel="stylesheet">
   <style type="text/css">
     html,
     body,
@@ -47,23 +48,213 @@
 </head>
 
 <body>
-
-  
-
-  
-  <!--Main layout-->
-  <main>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar pt-lg-1">
     <div class="container">
 
-      
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="{% url 'home' %}" target="_self">
+        <strong class="blue-text">P's Shop</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <!-- <li class="nav-item active">
+            <a class="nav-link waves-effect" href="">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="" target="_self">Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href=""
+              target="_self">Checkout</a>
+          </li> -->
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> {{request.user|cart_item_count }} </span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
+              <span class="clearfix d-none d-sm-inline-block">Logout</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+              <span class="clearfix d-none d-sm-inline-block"> Login</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="">
+              <span class="clearfix d-none d-sm-inline-block">Sign Up</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+  <div class="mt-5 pt-3">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
+          <i class="fas fa-info-circle me-3"></i>
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+    
+
+  <!--Main layout-->
+  <main>
+    <div class="container mt-lg-5">
+
+        <div class="table-responsive text-nowrap">
+        <h2 class="mt-4">Order Summary</h2>
+        <table class="table mt-lg-3">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for order_item in object.items.all %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ order_item.item.title }}</td>
+                    <td><span>&#8358;</span>{{ order_item.item.price }}</td>
+                    <td>
+                        <a href="{% url 'remove_single_item_from_cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                        {{ order_item.quantity }}
+                        <a href="{% url 'add_to_cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                    </td>
+                    <td>
+                        {% if order_item.item.discount_price %}
+                        <span>&#8358;</span>{{ order_item.get_total_discount_price }}
+                            <span class="badge badge-primary">Saving <span>&#8358;</span>{{ order_item.get_amount_saved }}</span>
+                        {% else %}
+                        <span>&#8358;</span>{{ order_item.get_total_item_price }}
+                        {% endif %}
+                        <a style="color: red;" href="{% url 'remove_from_cart' order_item.item.slug %}"><i class="fas fa-trash float-right"></i></a>
+                    </td>
+                </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Your cart is empty </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <a style="float: right;" class="btn btn-primary  btn-md" href="{% url 'home' %}">Continue Shopping</a>
+                </td>
+               
+           </tr>
+             {% endfor %}
+             <!-- {% if object.coupon %}
+              <tr>
+                <td colspan="4"><strong>Coupon</strong></td>
+                <td><strong>-<span>&#8358;</span>{{ object.coupon.amount }}</strong></td>
+              </tr>
+             {% endif %}
+             {% if object.get_total %}
+             <tr>
+                 <td colspan="4"><b>Order Total</b></td>
+                <td><strong><span>&#8358;</span>{{ object.get_total}}</strong></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <a style="float: right;" class="btn btn-success ml-2 btn-md" href="">Proceed to Checkout</a>
+                    <a style="float: right;" class="btn btn-primary  btn-md" href="">Continue Shopping</a>
+                </td>
+               
+           </tr>
+           {% endif %} -->
+            </tbody>
+        </table>
+
+        </div>
+
+
+
     </div>
   </main>
   <!--Main layout-->
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mt-2 wow fadeIn">
+
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus-g mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
-      © 2022 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+      © 2021 Copyright:
+      <a href="{% url 'home' %}" target="_blank"> P's GADGETS </a>
     </div>
     <!--/.Copyright-->
 
@@ -86,5 +277,4 @@
 
   </script>
 </body>
-
 </html>
