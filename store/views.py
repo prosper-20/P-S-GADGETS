@@ -15,6 +15,11 @@ class Home(ListView):
     context_object_name = "products"
 
 
+class OrderSummaryView(DetailView):
+    model = Order
+    template_name = "store/order_summary.html"
+
+
 # def home(request):
 #     products = Product.objects.all()
 #     context = {
