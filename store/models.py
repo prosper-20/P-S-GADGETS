@@ -30,7 +30,7 @@ class Product(models.Model):
     released_on = models.CharField(max_length=100)
     dimensions = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=15, decimal_places=2)
-    discount_price = models.FloatField(blank=True, null=True)
+    discount_price = models.DecimalField(max_digits=15, decimal_places=2, blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=3)
     label =  models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
@@ -67,6 +67,16 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
+
+    def get_total_item_price(self):
+        return self.quantity * self.item.price
+
+    def get_total_discount_item_price(self):
+        return self.quantity * self.item.discount_price
+
+    def get_amount_saved(self):
+        return self.get_total_item_price() - self.get_total_discount_item_price()
+
 
 
 class Order(models.Model):
