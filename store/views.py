@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from .forms import CheckoutForm
 
 # Create your views here.
 
@@ -15,6 +15,23 @@ class Home(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = "products"
+
+class CheckoutView(View):
+    def get(self, *args, **kwargs):
+        form = CheckoutForm()
+        context = {
+            'form': form
+        }
+
+        return render(self.request, "store/checkout.html")
+
+    def post(self, *args, **kwargs):
+        form = CheckoutForm(self.request.POST or None)
+        if form.is_valid():
+            print("The form is valid")
+            return redirect("checkout")
+        
+
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
