@@ -1,0 +1,151 @@
+{% load static %}
+{% load cart_template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block head_title %}{% endblock %}</title>
+  {% block extra_head %}
+  {% endblock %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <script src="https://kit.fontawesome.com/a42d75c02e.js" crossorigin="anonymous"></script>
+  <link href="{% static 'Order/css/bootstrap.min.css' %}" rel="stylesheet">
+  
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <link href="{% static 'Order/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Order/css/style.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'Core/main_1.css' %}">
+  <link rel="stylesheet" href="{% static 'Core/style.css' %}">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="{% url 'home' %}" target="_self">
+        <strong class="blue-text">P's Gadgets</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'order-summary' %}" class="nav-link waves-effect blue-text">
+              <span class="badge red z-depth-1 mr-1"> {{request.user|cart_item_count}}</span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block blue-text"> Cart </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect blue-text" href="{% url 'account_logout' %}">
+              <span class="clearfix d-none d-sm-inline-block blue-text">Logout</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect blue-text" href="{% url 'account_login' %}">
+              <span class="clearfix d-none d-sm-inline-block"> Login</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect blue-text" href="">
+              <span class="clearfix d-none d-sm-inline-block">Sign Up</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+    
+  
+      {% if messages %}  
+      <!-- <div class="pt-5 mt-4"> -->
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
+            <i class="fas fa-info-circle me-3"></i>
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        {% endfor %}
+    {% endif %}
+  </div>
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock %}
+
+    {% include "store/footer.html" %}
+    {% include "store/scripts.html" %}
+
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+</body>
+
+<script type="text/javascript" src="{% static 'store/js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'store/js/jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'store/js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'store/js/bootstrap.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'store/js/mdb.min.js' %}"></script></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+</html>

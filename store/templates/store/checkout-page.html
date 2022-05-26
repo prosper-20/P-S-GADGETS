@@ -28,7 +28,7 @@ P's Diner | order-checkout
           <!-- Left -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="{% url 'item_list' %}">Home
+              <a class="nav-link waves-effect" href="{% url 'home' %}">Home
               </a>
             </li>
             <li class="nav-item">
@@ -43,7 +43,7 @@ P's Diner | order-checkout
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
             <li class="nav-item">
-              <a href="{% url 'order_summary' %}" class="nav-link waves-effect">
+              <a href="{% url 'order-summary' %}" class="nav-link waves-effect">
                 <span class="badge red z-depth-1 mr-1">1</span>
                 <i class="fas fa-shopping-cart"></i>
                 <span class="clearfix d-none d-sm-inline-block"> Cart </span>
@@ -249,7 +249,7 @@ P's Diner | order-checkout
   
           <!--Grid column-->
           <div class="col-md-4 mb-4">
-            {% include "Order/order_snippets.html" %}
+            {% include "store/order_snippets.html" %}
           </div>
           <!--Grid column-->
   
