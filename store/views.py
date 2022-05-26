@@ -124,7 +124,7 @@ def remove_single_item_from_cart(request, slug):
             order_item.quantity -= 1
             order_item.save()
             messages.info(request, "This item quantity was updated")
-            return redirect('order-summary', slug=slug)
+            return redirect('order-summary')
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)
