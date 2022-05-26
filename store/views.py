@@ -4,6 +4,7 @@ from .models import Product, Order, OrderItem
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -34,6 +35,7 @@ class Detail(DetailView):
     template_name = "store/product-details.html"
     context_object_name = "product"
 
+@login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Product, slug=slug)
     order_item, created = OrderItem.objects.get_or_create(
@@ -49,6 +51,7 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity has been updated")
+            return redirect("product-detail", slug=slug)
         else:
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
