@@ -1,5 +1,6 @@
 import imp
 from django.shortcuts import render, get_object_or_404, redirect
+from pytz import country_names
 from .models import Product, Order, OrderItem
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
@@ -11,10 +12,12 @@ from .forms import CheckoutForm
 
 # Create your views here.
 
+
 class Home(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = "products"
+
 
 class CheckoutView(View):
     def get(self, *args, **kwargs):
@@ -27,15 +30,18 @@ class CheckoutView(View):
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
-        print(self.request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            print("The form is valid")
+            street_address = form.cleaned_data.get('street_address')
+            apartment_address = form.cleaned_data.get('apartment_address')
+            country = form.cleaned_data.get('country')
+            zip = form.cleaned_data.get('zip')
+            same_billing_address = form.cleaned_data.get('same_biling_address')
+            save_info = form.cleaned_data.get('save_info')
+            payment_option = form.cleaned_data.get('payment_option')
+
             return redirect("checkout")
         messages.warning(self.request, "Failed Checkut")
         return redirect('checkout')
-        
-
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
@@ -43,14 +49,12 @@ class OrderSummaryView(LoginRequiredMixin, View):
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             context = {
-                 'object': order
+                'object': order
             }
             return render(self.request, "store/order-summary.html", context)
         except ObjectDoesNotExist:
             messages.error(self.request, 'You do not have an active order')
             return redirect('/')
-        
-     
 
 
 # def home(request):
@@ -72,6 +76,7 @@ class Detail(DetailView):
     model = Product
     template_name = "store/product-details.html"
     context_object_name = "product"
+
 
 @login_required
 def add_to_cart(request, slug):
@@ -98,10 +103,11 @@ def add_to_cart(request, slug):
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(user=request.user,
-        ordered_date=ordered_date)
+                                     ordered_date=ordered_date)
         order.items.add(order_item)
         messages.info(request, "This item was added to your cart.")
         return redirect("order-summary")
+
 
 @login_required
 def remove_from_cart(request, slug):
@@ -122,11 +128,10 @@ def remove_from_cart(request, slug):
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)
-            
+
     else:
         messages.info(request, "You do not have an active order.")
         return redirect("product-detail", slug=slug)
-
 
 
 @login_required
@@ -152,8 +157,7 @@ def remove_single_item_from_cart(request, slug):
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)
-            
+
     else:
         messages.info(request, "You do not have an active order.")
         return redirect("product-detail", slug=slug)
-
