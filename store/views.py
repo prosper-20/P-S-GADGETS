@@ -51,11 +51,17 @@ class CheckoutView(View):
                 order.billing_address = billing_address
                 order.save()
                 return redirect("checkout")
-                messages.warning(self.request, "Failed Checkut")
-                return redirect('checkout')
+            messages.warning(self.request, "Failed Checkut")
+            return redirect('checkout')
         except ObjectDoesNotExist:
             messages.error(self.request, 'You do not have an active order')
             return redirect('order-summary')
+
+    
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'store/payment.html')
+
        
 
 
