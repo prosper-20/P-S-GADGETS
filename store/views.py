@@ -1,7 +1,6 @@
 import imp
 from django.shortcuts import render, get_object_or_404, redirect
-from pytz import country_names
-from .models import Product, Order, OrderItem
+from .models import Product, Order, OrderItem, BillingAddress
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
@@ -38,7 +37,14 @@ class CheckoutView(View):
             same_billing_address = form.cleaned_data.get('same_biling_address')
             save_info = form.cleaned_data.get('save_info')
             payment_option = form.cleaned_data.get('payment_option')
-
+            bliiling_address = BillingAddress(
+                user=self.request.user,
+                street_address = street_address,
+                apartment_address = apartment_address,
+                country=country,
+                zip = zip
+            )
+            bliiling_address.save()
             return redirect("checkout")
         messages.warning(self.request, "Failed Checkut")
         return redirect('checkout')
