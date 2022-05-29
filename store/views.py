@@ -63,16 +63,19 @@ class CheckoutView(View):
     
 class PaymentView(View):
     def get(self, *args, **kwargs):
+        # order
         return render(self.request, 'store/payment.html')
 
     def post(self, *args, **kwargs):
-        token = self.request.POST.get('')
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        token = self.request.POST.get('stripeToken')
         stripe.Charge.create(
-            amount=2000,
+            amount=order.get_total() * 100,
             currency='usd',
-            source="tok_amex",
-            description="Charge for jenny.rose@example.com"
+            source=token,
         )
+
+        order.ordered = True
 
        
 
