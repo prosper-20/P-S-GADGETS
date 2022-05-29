@@ -1,4 +1,5 @@
 import imp
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Order, OrderItem, BillingAddress
 from django.views.generic import ListView, DetailView, View
@@ -8,7 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
+import stripe
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 
@@ -61,6 +64,15 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         return render(self.request, 'store/payment.html')
+
+    def post(self, *args, **kwargs):
+        token = self.request.POST.get('')
+        stripe.Charge.create(
+            amount=2000,
+            currency='usd',
+            source="tok_amex",
+            description="Charge for jenny.rose@example.com"
+        )
 
        
 
