@@ -64,6 +64,7 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         # order
+        # You changed from payment.html  to payment2.html
         return render(self.request, 'store/payment.html')
 
     def post(self, *args, **kwargs):
