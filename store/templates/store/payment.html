@@ -18,6 +18,8 @@
   <link href="{% static 'store/css/style.min.css' %}" rel="stylesheet">
   <!-- YOU CREATED THIS FILE FOR THE PAYMENT STYLING PAGE -->
   <link href="{% static 'store/css/styler.css' %}" rel="stylesheet">
+  <!-- YOU ADDED THIS STRIPE HEAD -->
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body class="grey lighten-3">
@@ -111,8 +113,9 @@
                 {{ form | crispy }}
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form> -->
-            <script src="https://js.stripe.com/v3/"></script>
+            
             <form action="." method="post" id="stripe-form">
+              {% csrf_token %}
               <div class="stripe-form-row">
                 <label for="card-element" id="StripeBtnLabel">
                   Credit or Debit Card
@@ -273,8 +276,8 @@
   </script>
 
   <!-- FOR THE STRIPE PAYMENT -->
-  <script src="https://js.stripe.com/v3/"></script>
-<script nonce="">  // Create a Stripe client.
+  <!-- <script src="https://js.stripe.com/v3/"></script> -->
+  <script nonce="">  // Create a Stripe client.
   var stripe = Stripe('{{STRIPE_PUBLIC_KEY}}');
 
   // Create an instance of Elements.

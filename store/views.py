@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
 import stripe
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe.api_key = settings.STRIPE_PUBLISHABLE_KEY
 # Create your views here.
 
 
@@ -69,7 +69,7 @@ class PaymentView(View):
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
         token = self.request.POST.get('stripeToken')
-        amount = order.get_total() * 100
+        amount = int(order.get_total() * 100)
 
         try:
             charge = stripe.Charge.create(
@@ -77,6 +77,23 @@ class PaymentView(View):
             currency='usd',
             source=token,
             )
+            order.ordered = True
+            # Creating the payment
+            payment = Payment()
+            payment.stripe_charge_id=charge["id"]
+            payment.user = self.request.user
+            payment.amount = order.get_total()
+            payment.save()
+
+            # Assign payment to order
+            order.ordered = True
+            order.payment = payment
+            order.save()
+
+
+            messages.success(self.request, "Your order was successful")
+            return redirect("/")
+            
         except stripe.error.CardError as e:
             # Since it's a decline, stripe.error.CardError will be caught
             body = e.json_body
@@ -115,30 +132,11 @@ class PaymentView(View):
             messages.warning(self.request, "A serious error occured, we are on it.")
             return redirect("home")
 
-        messages.warning(self.request, "Invalid data received")
-        return redirect("payment")
+        # messages.warning(self.request, "Invalid data received")
+        # return redirect("payment")
 
 
-
-
-
-
-
-
-
-
-        order.ordered = True
-        # Creating the payment
-        payment = Payment()
-        payment.stripe_charge_id=charge["id"]
-        payment.user = self.request.user
-        payment.amount = amount
-        payment.save()
-
-        # Assign payment to order
-        order.ordered = True
-        order.payment = payment
-        order.save()
+        
 
        
 
