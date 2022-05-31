@@ -2,7 +2,7 @@ import imp
 from itertools import product
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Order, OrderItem, BillingAddress, Payment
+from .models import Product, Order, OrderItem, BillingAddress, Payment, Coupon
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
@@ -96,6 +96,7 @@ class PaymentView(View):
             currency='usd',
             source=token,
             )
+        
             order.ordered = True
             # Creating the payment
             payment = Payment()
@@ -282,3 +283,20 @@ def remove_single_item_from_cart(request, slug):
     else:
         messages.info(request, "You do not have an active order.")
         return redirect("product-detail", slug=slug)
+
+def get_coupon(request, code):
+    try:
+        coupon = Coupon.objects.get(code=code)
+    except ObjectDoesNotExist:
+        messages.info(request, "This coupon doesn't exist")
+        return redirect("checkout")
+
+
+def add_coupon(request, code):
+    try:
+        order = Order.objects.get(user=request.user, ordered=False)
+
+        coupon = Coupon.objects.get
+    except ObjectDoesNotExist:
+        messages.info(request, 'You do not have an active order')
+        return redirect("checkout")
