@@ -38,9 +38,9 @@
 <div class="container">
 <div id="welcomeLine" class="row">
 	{% if request.user.is_authenticated %}
-	<div class="span6">Welcome, <strong> {{ user.username }}</strong></div>
+	<div class="span6">Welcome, <strong> {{ user.username|capfirst }}</strong></div>
 	{% else %}
-	<div class="span6">Welcome!<strong> {{ user.username }}</strong></div>
+	<div class="span6">Welcome!<strong> User</strong></div>
 	{% endif %}
 	<div class="span6">
 	<div class="pull-right">
