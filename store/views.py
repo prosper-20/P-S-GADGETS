@@ -311,7 +311,7 @@ def add_coupon(request):
                 order.coupon = get_coupon(request, code=code)
                 order.save()
                 messages.success(request, "Successfully added coupon")
-                return redirect("checkout")
+                return redirect("home")
 
             except ObjectDoesNotExist:
                 messages.info(request, 'You do not have an active order')
