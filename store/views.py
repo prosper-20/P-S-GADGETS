@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
 import stripe
 
-stripe.api_key = settings.STRIPE_PUBLISHABLE_KEY
+stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 
