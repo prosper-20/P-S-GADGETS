@@ -74,7 +74,7 @@ class PaymentView(View):
 
         try:
             charge = stripe.Charge.create(
-            amount=order.get_total() * 100,
+            amount=amount,
             currency='usd',
             source=token,
             )
