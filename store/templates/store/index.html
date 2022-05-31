@@ -278,7 +278,7 @@
 				  <i class="tag"></i>
 					<a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a>
 					<div class="caption">
-					  <h5>{{ product.title }}</h5>
+					  <h5>{{ product.title|truncatechars:20 }}</h5>
 					  <h4><a class="btn" href="{{ product.get_absolute_url }}">VIEW</a> <span class="pull-right">
 						<span>&#8358;</span>
 						  {% if product.discount_price %}
@@ -598,7 +598,7 @@
 		<a href="themes/css/#" name="journal"><img src="{% static 'store/themes/switch/images/clr/journal.png' %}" alt="bootstrap business templates"></a>
 		<a href="themes/css/#" name="readable"><img src="{% static 'store/themes/switch/images/clr/readable.png' %}" alt="bootstrap business templates"></a>	
 		<a href="themes/css/#" name="simplex"><img src="{% static 'store/themes/switch/images/clr/simplex.png' %}" alt="bootstrap business templates"></a>
-		<a href="themes/css/#" name="slate"><img src="[% static 'store/themes/switch/images/clr/slate.png' %}" alt="bootstrap business templates"></a>
+		<a href="themes/css/#" name="slate"><img src="{% static 'store/themes/switch/images/clr/slate.png' %}" alt="bootstrap business templates"></a>
 		<a href="themes/css/#" name="spacelab"><img src="{% static 'store/themes/switch/images/clr/spacelab.png' %}" alt="bootstrap business templates"></a>
 		<a href="themes/css/#" name="united"><img src="{% static 'store/themes/switch/images/clr/united.png' %}" alt="bootstrap business templates"></a>
 		<p style="margin:0;line-height:normal;margin-left:-10px;display:none;"><small>These are just examples and you can build your own color scheme in the backend.</small></p>
