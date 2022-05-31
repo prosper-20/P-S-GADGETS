@@ -1,4 +1,5 @@
 import imp
+from itertools import product
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Order, OrderItem, BillingAddress, Payment
@@ -19,6 +20,17 @@ class Home(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = "products"
+    
+class HomeView(View):
+    def get(self, *args, **kwargs):
+        products = Product.objects.all()
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        context = {
+            'products': products,
+            'order': order,
+        }
+
+        return render(self.request, 'store/index.html', context)
 
 
 class CheckoutView(View):
@@ -69,8 +81,11 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         # order
-        # You changed from payment.html  to payment2.html
-        return render(self.request, 'store/payment.html')
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        context = {
+            "order": order
+        }
+        return render(self.request, 'store/payment.html', context)
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
