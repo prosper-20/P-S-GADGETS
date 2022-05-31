@@ -287,6 +287,7 @@ def remove_single_item_from_cart(request, slug):
 def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
+        return coupon
     except ObjectDoesNotExist:
         messages.info(request, "This coupon doesn't exist")
         return redirect("checkout")
@@ -295,8 +296,11 @@ def get_coupon(request, code):
 def add_coupon(request, code):
     try:
         order = Order.objects.get(user=request.user, ordered=False)
+        order.coupon = get_coupon(request, code=code)
+        order.save()
+        messages.success(request, "Successfully added coupon")
+        return redirect("checkout")
 
-        coupon = Coupon.objects.get
     except ObjectDoesNotExist:
         messages.info(request, 'You do not have an active order')
         return redirect("checkout")
