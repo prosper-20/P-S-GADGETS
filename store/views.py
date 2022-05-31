@@ -24,10 +24,8 @@ class Home(ListView):
 class HomeView(View):
     def get(self, *args, **kwargs):
         products = Product.objects.all()
-        order = Order.objects.get(user=self.request.user, ordered=False)
         context = {
             'products': products,
-            'order': order,
         }
 
         return render(self.request, 'store/index.html', context)
