@@ -37,7 +37,11 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+	{% if request.user.is_authenticated %}
+	<div class="span6">Welcome, <strong> {{ user.username }}</strong></div>
+	{% else %}
+	<div class="span6">Welcome!<strong> {{ user.username }}</strong></div>
+	{% endif %}
 	<div class="span6">
 	<div class="pull-right">
 		<!-- <a href="product_summary.html"><span class="">Fr</span></a>
