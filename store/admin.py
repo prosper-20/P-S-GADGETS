@@ -7,7 +7,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ["title", "brand", "model", "price"]
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['user', 'ordered']
+    list_display = ['user', 'ordered', 'being_delivered', 'refund_requested', 'refund_granted', 'billing_address', 'payment', 'coupon']
+    list_display_links = [
+        'billing_address', 
+        'payment',
+        'coupon'
+    ]
+    list_filter = ['user', 'ordered', 'being_delivered', 'refund_requested', 'refund_granted']
 
 admin.site.register(Product, ProductAdmin)
 

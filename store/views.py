@@ -11,10 +11,15 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm, CouponForm
 import stripe
+import random
+import string
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
+
+def create_ref_code(self):
+    return "".join(random.choices(string.ascii_lowercase + string.digits, k=20))
 
 class Home(ListView):
     model = Product
@@ -127,6 +132,7 @@ class PaymentView(View):
                 item.save()
             order.ordered = True
             order.payment = payment
+            order.ref_code = create_ref_code()
             order.save()
 
 

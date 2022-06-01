@@ -87,6 +87,7 @@ class OrderItem(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ref_code = models.CharField(max_length=20)
     items = models.ManyToManyField(OrderItem)
     strat_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
@@ -98,7 +99,7 @@ class Order(models.Model):
     received = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
-    
+
 
 
 
