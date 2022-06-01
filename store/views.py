@@ -18,7 +18,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 
-def create_ref_code(self):
+def create_ref_code():
     return "".join(random.choices(string.ascii_lowercase + string.digits, k=20))
 
 class Home(ListView):
