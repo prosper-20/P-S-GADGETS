@@ -2,14 +2,14 @@ import imp
 from itertools import product
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Order, OrderItem, BillingAddress, Payment, Coupon
+from .models import Product, Order, OrderItem, BillingAddress, Payment, Coupon, Refund
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, CouponForm
+from .forms import CheckoutForm, CouponForm, RefundForm
 import stripe
 import random
 import string
@@ -328,4 +328,21 @@ class AddCouponView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, 'You do not have an active order')
                 return redirect("checkout")
+
+
+class RequestRefundView(View):
+    def post(self, *args, **kwargs):
+        form = RefundForm(self.request.POST)
+        if form.is_valid:
+            ref_code = form.cleaned_data.get('ref_code')
+            message = form.cleaned_data.get("message")
+            try:
+                order = Order.objects.get(ref_code=ref_code)
+                order.refund_requested = True
+                order.save()
+
+            refund = Refund()
+            refund.order = order
+            refund.reason = message
+            refund.save()
 
