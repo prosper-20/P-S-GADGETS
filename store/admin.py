@@ -6,6 +6,11 @@ from .models import Product, Order, OrderItem, Payment, Coupon, Refund
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["title", "brand", "model", "price"]
 
+def make_refund_accepted(modeladmin, request, queryset):
+    queryset.update(refund_requested=False, refund_granted=True)
+make_refund_accepted.short_description = "Update orders to refund granted"   
+
+
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user', 'ordered', 'being_delivered', 'received', 'refund_requested', 'refund_granted', 'billing_address', 'payment', 'coupon']
     list_display_links = [
@@ -19,6 +24,8 @@ class OrderAdmin(admin.ModelAdmin):
         'user__username',
         'ref_code'
     ]
+
+    actions = [make_refund_accepted]
 
 admin.site.register(Product, ProductAdmin)
 

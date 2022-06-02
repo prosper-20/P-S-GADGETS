@@ -332,11 +332,15 @@ class AddCouponView(View):
 
 class RequestRefundView(View):
     def get(self, *args, **kwargs):
-        return render(self.request, 'store/request_refund.html')
+        form = RefundForm()
+        context = {
+            "form": form
+        }
+        return render(self.request, 'store/request_refund.html', context)
 
     def post(self, *args, **kwargs):
         form = RefundForm(self.request.POST)
-        if form.is_valid:
+        if form.is_valid():
             ref_code = form.cleaned_data.get('ref_code')
             message = form.cleaned_data.get("message")
             email = form.cleaned_data.get("email")
