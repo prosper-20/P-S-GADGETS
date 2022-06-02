@@ -138,7 +138,7 @@
                       <option value="">Choose...</option>
                       <option>United States</option>
                     </select> -->
-                    {{ form.country }}         
+                    {{ form.shipping_country }}         
                     <div class="invalid-feedback">
                       Please select a valid country.
                     </div>
@@ -151,9 +151,9 @@
                   <!--Grid column-->
                   <div class="col-lg-4 col-md-6 mb-4">
 
-                    <label for="zip">Zip</label>
+                    <label for="shipping_zip">Zip</label>
                     <!-- <input type="text" class="form-control" id="zip" placeholder="" required> -->
-                    {{ form.zip }}
+                    <input type="text" placeholder="Zip Code" id="shipping_zip" name="shipping_zip" class="form-control">
                     <div class="invalid-feedback">
                       Zip code required.
                     </div>
