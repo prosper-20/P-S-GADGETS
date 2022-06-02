@@ -78,23 +78,41 @@ class CheckoutView(View):
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             if form.is_valid():
-                street_address = form.cleaned_data.get('street_address')
-                apartment_address = form.cleaned_data.get('apartment_address')
-                country = form.cleaned_data.get('country')
-                zip = form.cleaned_data.get('zip')
-               
-                payment_option = form.cleaned_data.get('payment_option')
-                billing_address = Address(
-                    user=self.request.user,
-                    street_address = street_address,
-                    apartment_address = apartment_address,
-                    country=country,
-                    zip = zip,
-                    address_type="B"
-                )
-                billing_address.save()
-                order.billing_address = billing_address
+
+                use_default_shipping = form.cleaned_data.get('use_default_shipping')
+                if use_default_shipping:
+                    print("Using the default shipping address")
+                    address_qs = Address.objects.filter(
+                        user=self.request.user,
+                        address_type="S",
+                        default=True
+                    )
+                    if address_qs.exists():
+                        shipping_address = address_qs[0]
+                    else:
+                        messages.info(self.request, "No default shipping address available")
+                        return redirect('checkout')
+                else:
+                    print("User is entering a new shipping address")
+                    shipping_address1 = form.cleaned_data.get('shipping_address')
+                    shipping_address2 = form.cleaned_data.get('shipping_address2')
+                    shipping_country = form.cleaned_data.get('shipping_country')
+                    shipping_zip = form.cleaned_data.get('shipping_zip')
+                
+                    
+                    shipping_address = Address(
+                        user=self.request.user,
+                        street_address = shipping_address1,
+                        apartment_address = shipping_address2,
+                        country=shipping_country,
+                        zip =shipping_zip,
+                        address_type="S"
+                    )
+                    shipping_address.save()
+                order.shipping_address = shipping_address
                 order.save()
+
+                payment_option = form.cleaned_data.get('payment_option')
 
                 if payment_option == "S":
                     return redirect("payment", payment_option="stripe")
