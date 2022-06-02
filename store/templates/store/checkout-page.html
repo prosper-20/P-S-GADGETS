@@ -152,11 +152,13 @@
                 </div>
                 
               </div> 
-
+              {% if default_shipping_address%}
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" name="use_default_shipping" id="use_default_shipping">
-                <label class="custom-control-label" for="use_default_shipping">Use default shipping address: 10 Obe Street</label>
+                <label class="custom-control-label" for="use_default_shipping">Use default shipping address: {{default_shipping_address.address|truncatechars:10}}</label>
               </div>
+              {% endif %}
+              
                 <hr>
 
               <h3>Billing Address</h3>
@@ -184,7 +186,7 @@
                       <option value="">Choose...</option>
                       <option>United States</option>
                     </select> -->
-                    {{ form.country }}         
+                    {{ form.billing_country }}         
                     <div class="invalid-feedback">
                       Please select a valid country.
                     </div>
@@ -214,12 +216,13 @@
                 <input type="checkbox" class="custom-control-input" name="set_default_billing" id="set_default_billing">
                 <label class="custom-control-label" for="set_default_billing">Save this information for next time</label>
               </div>
-
+              
+              {% if default_billing_address %}
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" name="use_default_billing" id="use_default_billing">
-                <label class="custom-control-label" for="use_default_billing">Use default billing address: 10 Obe Street</label>
+                <label class="custom-control-label" for="use_default_billing">Use default billing address: {{default_billing_address.address|truncatechars:10}}</label>
               </div>
-
+              {% endif %}
               <hr>
 
               <h3>Payment Option</h3>

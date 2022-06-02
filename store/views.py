@@ -1,8 +1,9 @@
+from email.policy import default
 import imp
 from itertools import product
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Order, OrderItem, Address, Payment, Coupon, Refund
+from .models import Product, Order, OrderItem, Address, Payment, Coupon, Refund, Address
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
@@ -47,6 +48,24 @@ class CheckoutView(View):
             'order': order,
             'DISPLAY_COUPON_FORM': True,
             }
+
+            shipping_address_qs = Address.objects.filter(
+                user=self.request.user,
+                address_type="S",
+                default=True
+            )
+            if shipping_address_qs.exists():
+                context.update({'default_shipping_address': shipping_address_qs[0]})
+
+            billing_address_qs = Address.objects.filter(
+                user=self.request.user,
+                address_type="B",
+                default=True
+            )
+            if billing_address_qs.exists():
+                context.update({'default_billing_address': billing_address_qs[0]})
+
+
             return render(self.request, "store/checkout-page.html", context)   
         except ObjectDoesNotExist:
             messages.info(self.request, 'You do not have an active order')
@@ -63,9 +82,7 @@ class CheckoutView(View):
                 apartment_address = form.cleaned_data.get('apartment_address')
                 country = form.cleaned_data.get('country')
                 zip = form.cleaned_data.get('zip')
-                # ADD FUNCTIONALITY LATER
-                # same_shipping_address = form.cleaned_data.get('same_shipping_address')
-                # save_info = form.cleaned_data.get('save_info')
+               
                 payment_option = form.cleaned_data.get('payment_option')
                 billing_address = Address(
                     user=self.request.user,
