@@ -3,14 +3,14 @@ import imp
 from itertools import product
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Order, OrderItem, Address, Payment, Coupon, Refund, Address
+from .models import Product, Order, OrderItem, Address, Payment, Coupon, Refund, Address, UserProfile
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, CouponForm, RefundForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 import stripe
 import random
 import string
@@ -209,6 +209,19 @@ class PaymentView(View):
                 "order": order,
                 'DISPLAY_COUPON_FORM': False,
             }
+            userprofile = self.request.user.userprofile
+            if userprofile.one_click_purchasing:
+                cards = stripe.Customer.list_sources(
+                    userprofile.stripe.customer_id,
+                    limit=3,
+                    object="card"
+                )
+                card_list = cards['data']
+                if len(card_list) > 0:
+                    # update the context with the default card
+                    context.update({
+                        'card': card_list[0]
+                    })
             return render(self.request, 'store/payment.html', context)
         else:
             messages.warning(self.request, "You have not added a billing address")
@@ -216,17 +229,46 @@ class PaymentView(View):
 
     def post(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        token = self.request.POST.get('stripeToken')
-        amount = int(order.get_total() * 100)
+        form = PaymentForm(self.request.POST)
+        userprofile = UserProfile.objects.get(user=self.request.user)
+        if form.is_valid():
+            token = form.cleaned_data.get('stripeToken')
+            save = form.cleaned_data.get('save')
+            use_default = form.cleaned_data.get('use_default')
+
+            if save:
+                if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
+                    customer = stripe.Customer.retrieve(
+                        userprofile.stripe_customer_id)
+                    customer.sources.create(source=token)
+
+                else:
+                    customer = stripe.Customer.create(
+                        email=self.request.user.email,
+                    )
+                    customer.sources.create(source=token)
+                    userprofile.stripe_customer_id = customer['id']
+                    userprofile.one_click_purchasing = True
+                    userprofile.save()
+
+            amount = int(order.get_total() * 100)
 
         try:
-            charge = stripe.Charge.create(
-            amount=amount,
-            currency='usd',
-            source=token,
-            )
+            if use_default or save:
+                    # charge the customer because we cannot charge the token more than once
+                charge = stripe.Charge.create(
+                    amount=amount,  # cents
+                    currency="usd",
+                    customer=userprofile.stripe_customer_id
+                )
+            else:
+                charge = stripe.Charge.create(
+                amount=amount,
+                currency='usd',
+                source=token,
+                )
         
-            order.ordered = True
+            
             # Creating the payment
             payment = Payment()
             payment.stripe_charge_id=charge["id"]
