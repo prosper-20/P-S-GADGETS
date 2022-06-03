@@ -229,7 +229,16 @@
 
 
 {% block extra_scripts %}
+// YOU JUST ADDED THIS FOR THE JS
+<script type="text/javascript" src="{% static 'store/js/jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'store/js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'store/js/bootstrap.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'store/js/mdb.min.js' %}"></script>
 <script>
+
 var hideable_shipping_form = $('.hideable_shipping_form');
 var hideable_billing_form = $('.hideable_billing_form');
 
