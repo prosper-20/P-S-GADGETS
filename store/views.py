@@ -75,7 +75,7 @@ class CheckoutView(View):
                 context.update({'default_billing_address': billing_address_qs[0]})
 
 
-            return render(self.request, "store/checkout-page.html", context)   
+            return render(self.request, "store/checkout_page_2.html", context)   
         except ObjectDoesNotExist:
             messages.info(self.request, 'You do not have an active order')
             return redirect("checkout")
@@ -289,11 +289,6 @@ class PaymentView(View):
 
         # messages.warning(self.request, "Invalid data received")
         # return redirect("payment")
-
-
-        
-
-       
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
