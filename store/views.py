@@ -251,7 +251,7 @@ class PaymentView(View):
                     userprofile.one_click_purchasing = True
                     userprofile.save()
 
-            amount = int(order.get_total() * 100)
+        amount = int(order.get_total() * 100)
 
         try:
             if use_default or save:
