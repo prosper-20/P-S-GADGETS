@@ -24,7 +24,8 @@ urlpatterns = [
     path("", include("store.urls")),
     path('accounts/', include('allauth.urls')),
     path("register/", user_views.register, name="register"),
-    path("register/2/", user_views.register2, name="register2")
+    path("register/2/", user_views.register2, name="register2"),
+    path('login/', user_views.login, name="login")
 ]
 
 if settings.DEBUG:

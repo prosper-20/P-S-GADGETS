@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 # Create your views here.
 
@@ -25,11 +26,11 @@ def register2(request):
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
-        password = request.POST.get('password')
+        password = request.POST.get('password1')
         password2 = request.POST.get('password2')
 
         if password == password2:
-            if User.objects.filter(usermame=username).exists():
+            if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username already exists')
                 return redirect("register")
             elif User.objects.filter(email=email).exists():
@@ -48,6 +49,23 @@ def register2(request):
             messages.info(request, "Both password fields didn't match")
             return redirect("/")
     return render(request, 'users/register_2.html')
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password1")
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect("/")
+        else:
+            messages.info(request, "Invalid Credentials")
+            return redirect("/")
+
+    return render(request, "login.html")
+
 
             
 
