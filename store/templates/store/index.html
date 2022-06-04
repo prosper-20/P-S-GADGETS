@@ -456,7 +456,8 @@
 		</div>
 		<h4>Latest Products </h4>
 			  <ul class="thumbnails">
-				<li class="span3">
+				  {% for latest in latests %}
+				<!-- <li class="span3">
 				  <div class="thumbnail">
 					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/6.jpg' %}" alt=""/></a>
 					<div class="caption">
@@ -468,7 +469,21 @@
 					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 					</div>
 				  </div>
-				</li>
+				</li> -->
+				<li class="span3">
+					<div class="thumbnail">
+					  <a  href="{{ latest.get_absolute_url }}"><img src="{{ latest.image.url }}" alt=""/></a>
+					  <div class="caption">
+						<h5>{{ latest.title }}</h5>
+						<p> 
+						  {{ latest.get_category_display }}
+						</p>
+					   
+						<h4 style="text-align:center"><a class="btn" href="{{ latest.get_absolute_url }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">${{ latest.price }}</a></h4>
+					  </div>
+					</div>
+				  </li>
+				{% endfor %}
 				<li class="span3">
 				  <div class="thumbnail">
 					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/7.jpg' %}" alt=""/></a>

@@ -28,6 +28,11 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping')
 )
 
+TYPE_CHOICES = (
+    ('F','Featured'),
+    ('L', 'Latest')
+)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -52,6 +57,7 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to="product_images")
+    type = models.CharField(choices=TYPE_CHOICES, max_length=2)
     
 
 

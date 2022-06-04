@@ -30,11 +30,16 @@ class Home(ListView):
 class HomeView(View):
     def get(self, *args, **kwargs):
         products = Product.objects.all()
+        latests = Product.objects.filter(type="L")
         context = {
             'products': products,
+            'latests': latests
         }
 
         return render(self.request, 'store/index.html', context)
+
+
+
 
 def is_valid_form(values):
     valid = True
