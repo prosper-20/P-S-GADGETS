@@ -474,7 +474,7 @@
 					<div class="thumbnail">
 					  <a  href="{{ latest.get_absolute_url }}"><img src="{{ latest.image.url }}" alt=""/></a>
 					  <div class="caption">
-						<h5><strong>{{ latest.title }}</strong></h5>
+						<h5> <a href="{{ latest.get_absolute_url }}"><strong>{{ latest.title }}</strong></a></h5>
 						<p> 
 						  {{ latest.get_category_display }}
 						</p>
