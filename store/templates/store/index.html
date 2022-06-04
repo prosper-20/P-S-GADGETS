@@ -260,7 +260,23 @@
 				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 				</div>
 			  </div><br/>
-			<div class="thumbnail">
+			  <!-- YOU JUST REEATED THSIIS TO COVER FOR THE DEAL OF THE DAY -->
+			  <div class="thumbnail">
+				<img src="{% static 'store/themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
+				<div class="caption">
+				  <h5>Kindle</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+				</div>
+			  </div><br/>
+			  <div class="thumbnail">
+				<img src="{% static 'store/themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
+				<div class="caption">
+				  <h5>Kindle</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+				</div>
+			  </div><br/>
+			  
+			  <div class="thumbnail">
 				<img src="{% static 'store/themes/images/payment_methods.png' %}" title="Bootshop Payment Methods" alt="Payments Methods">
 				<div class="caption">
 				  <h5>Payment Methods</h5>
@@ -543,6 +559,98 @@
 					</div>
 				  </div>
 				</li> -->
+
+
+
+				<h4>Deal Of The Day!</h4>
+			  <ul class="thumbnails">
+				  {% for latest in latests %}
+				<!-- <li class="span3">
+				  <div class="thumbnail">
+					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/6.jpg' %}" alt=""/></a>
+					<div class="caption">
+					  <h5>Product name</h5>
+					  <p> 
+						Lorem Ipsum is simply dummy text. 
+					  </p>
+					 
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					</div>
+				  </div>
+				</li> -->
+				<li class="span3">
+					<div class="thumbnail">
+					  <a  href="{{ latest.get_absolute_url }}"><img src="{{ latest.image.url }}" alt=""/></a>
+					  <div class="caption">
+						<h5> <a href="{{ latest.get_absolute_url }}"><strong>{{ latest.title }}</strong></a></h5>
+						<p> 
+						  {{ latest.get_category_display }}
+						</p>
+						<h4 style="text-align:center"><a class="btn" href="{{ latest.get_absolute_url }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="{{ latest.get_add_to_cart_url }}">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href=""><span>&#8358;</span>{{ latest.price }}</a></h4>
+					  </div>
+					</div>
+				  </li>
+				{% endfor %}
+				<!-- <li class="span3">
+				  <div class="thumbnail">
+					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/7.jpg' %}" alt=""/></a>
+					<div class="caption">
+					  <h5>Product name</h5>
+					  <p> 
+						Lorem Ipsum is simply dummy text. 
+					  </p>
+					 <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					</div>
+				  </div>
+				</li>
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/8.jpg' %}" alt=""/></a>
+					<div class="caption">
+					  <h5>Product name</h5>
+					  <p> 
+						Lorem Ipsum is simply dummy text. 
+					  </p>
+					   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					</div>
+				  </div>
+				</li>
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/9.jpg' %}" alt=""/></a>
+					<div class="caption">
+					  <h5>Product name</h5>
+					  <p> 
+						Lorem Ipsum is simply dummy text. 
+					  </p>
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					</div>
+				  </div>
+				</li>
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/10.jpg' %}" alt=""/></a>
+					<div class="caption">
+					  <h5>Product name</h5>
+					  <p> 
+						Lorem Ipsum is simply dummy text. 
+					  </p>
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					</div>
+				  </div>
+				</li>
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/11.jpg' %}" alt=""/></a>
+					<div class="caption">
+					  <h5>Product name</h5>
+					  <p> 
+						Lorem Ipsum is simply dummy text. 
+					  </p>
+					   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+					</div>
+				  </div>
+				</li> -->
 			  </ul>	
 
 		</div>
@@ -623,28 +731,28 @@
 	</div>
 	<div class="themeName">Background Patterns </div>
 	<div class="images patterns">
-		<a href="themes/css/#" name="pattern1"><img src="{% static 'store/themes/switch/images/pattern/pattern1.' %}'" alt="bootstrap business templates" class="active"></a>
-		<a href="store/themes/css/#" name="pattern2"><img src="{% static 'store/themes/switch/images/pattern/pattern2.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern3"><img src="{% static 'store/themes/switch/images/pattern/pattern3.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern4"><img src="{% static 'store/themes/switch/images/pattern/pattern4.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern5"><img src="{% static 'store/themes/switch/images/pattern/pattern5.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern6"><img src="{% static 'store/themes/switch/images/pattern/pattern6.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern7"><img src="{% static 'store/themes/switch/images/pattern/pattern7.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern8"><img src="{% static 'store/themes/switch/images/pattern/pattern8.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern9"><img src="{% static 'store/themes/switch/images/pattern/pattern9.' %}'" alt="bootstrap business templates"></a>
-		<a href="store/themes/css/#" name="pattern10"><img src="{% static 'store/themes/switch/images/pattern/pattern10.' %}'" alt="bootstrap business templates"></a>
+		<a href="themes/css/#" name="pattern1"><img src="{% static 'store/themes/switch/images/pattern/pattern1.png' %}'" alt="bootstrap business templates" class="active"></a>
+		<a href="store/themes/css/#" name="pattern2"><img src="{% static 'store/themes/switch/images/pattern/pattern2.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern3"><img src="{% static 'store/themes/switch/images/pattern/pattern3.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern4"><img src="{% static 'store/themes/switch/images/pattern/pattern4.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern5"><img src="{% static 'store/themes/switch/images/pattern/pattern5.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern6"><img src="{% static 'store/themes/switch/images/pattern/pattern6.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern7"><img src="{% static 'store/themes/switch/images/pattern/pattern7.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern8"><img src="{% static 'store/themes/switch/images/pattern/pattern8.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern9"><img src="{% static 'store/themes/switch/images/pattern/pattern9.png' %}'" alt="bootstrap business templates"></a>
+		<a href="store/themes/css/#" name="pattern10"><img src="{% static 'store/themes/switch/images/pattern/pattern10.png' %}'" alt="bootstrap business templates"></a>
 		
-		<a href="" name="pattern11"><img src="{% static 'store/themes/switch/images/pattern/pattern11.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern12"><img src="{% static 'store/themes/switch/images/pattern/pattern12.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern13"><img src="{% static 'store/themes/switch/images/pattern/pattern13.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern14"><img src="{% static 'store/themes/switch/images/pattern/pattern14.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern15"><img src="{% static 'store/themes/switch/images/pattern/pattern15.' %}" alt="bootstrap business templates"></a>
-		
-		<a href="" name="pattern16"><img src="{% static 'store/themes/switch/images/pattern/pattern16.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern17"><img src="{% static 'store/themes/switch/images/pattern/pattern17.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern18"><img src="{% static 'store/themes/switch/images/pattern/pattern18.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern19"><img src="{% static 'store/themes/switch/images/pattern/pattern19.' %}" alt="bootstrap business templates"></a>
-		<a href="" name="pattern20"><img src="{% static 'store/themes/switch/images/pattern/pattern20.' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern11"><img src="{% static 'store/themes/switch/images/pattern/pattern11.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern12"><img src="{% static 'store/themes/switch/images/pattern/pattern12.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern13"><img src="{% static 'store/themes/switch/images/pattern/pattern13.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern14"><img src="{% static 'store/themes/switch/images/pattern/pattern14.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern15"><img src="{% static 'store/themes/switch/images/pattern/pattern15.png' %}" alt="bootstrap business templates"></a>
+		png
+		<a href="" name="pattern16"><img src="{% static 'store/themes/switch/images/pattern/pattern16.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern17"><img src="{% static 'store/themes/switch/images/pattern/pattern17.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern18"><img src="{% static 'store/themes/switch/images/pattern/pattern18.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern19"><img src="{% static 'store/themes/switch/images/pattern/pattern19.png' %}" alt="bootstrap business templates"></a>
+		<a href="" name="pattern20"><img src="{% static 'store/themes/switch/images/pattern/pattern20.png' %}" alt="bootstrap business templates"></a>
 		 
 	</div>
 	</div>
