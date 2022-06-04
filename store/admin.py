@@ -5,7 +5,7 @@ from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address,
 # Register your models here.
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ["title", "brand", "model", "price"]
+    list_display = ["title", "brand", "model", "category", "price"]
 
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
