@@ -35,7 +35,7 @@ class UserProfile(models.Model):
     one_click_purchasing = models.BooleanField()
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
