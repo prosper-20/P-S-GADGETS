@@ -29,7 +29,7 @@ class Home(ListView):
     
 class HomeView(View):
     def get(self, *args, **kwargs):
-        products = Product.objects.all()
+        products = Product.objects.filter(type="F")
         latests = Product.objects.filter(type="L")
         context = {
             'products': products,
