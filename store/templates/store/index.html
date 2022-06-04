@@ -205,7 +205,7 @@
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
 		{% if request.user.is_authenticated %}
-		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{ request.user|cart_item_count }} Items in your cart <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="{% url 'order-summary' %}"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{ request.user|cart_item_count }} Items in your cart <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		{% else %}
 		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">0 Items in your cart <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		{% endif %}
