@@ -52,7 +52,7 @@
 		{% if request.user.is_authenticated %}
 		<span class="btn btn-mini"><span>&#8358;</span>155.00</span>
 		<a href="{% url 'order-summary' %}"><span class=""><span>&#8358;</span></span></a>
-		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Items in your cart </span> </a>
+		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Item(s) in your cart </span> </a>
 		<a href="{% url 'account_logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
 		{% else %} 
 		<span class="btn btn-mini"><span>&#8358;</span>0</span>
@@ -483,7 +483,7 @@
 					</div>
 				  </li>
 				{% endfor %}
-				<li class="span3">
+				<!-- <li class="span3">
 				  <div class="thumbnail">
 					<a  href="product_details.html"><img src="{% static 'store/themes/images/products/7.jpg' %}" alt=""/></a>
 					<div class="caption">
@@ -542,7 +542,7 @@
 					   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 					</div>
 				  </div>
-				</li>
+				</li> -->
 			  </ul>	
 
 		</div>
