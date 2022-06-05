@@ -358,20 +358,21 @@
 
 	<div class="tab-pane  active" id="blockView">
 		<ul class="thumbnails">
+			{% for item in lis %}
 			<li class="span3">
-				{% for item in lis %}
 			  <div class="thumbnail">
 				<a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt=""/></a>
 				<div class="caption">
-				  <h5>{{ item.title }}</h5>
+				  <h5>{{ item.title|truncatechars:50 }}</h5>
 				  <p> 
 					Lorem Ipsum is simply dummy text. 
 				  </p>
-				  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;{{ item.price }}</a></h4>
+				  <h4 style="text-align:center"><a class="btn" href="{{ latest.get_absolute_url }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href=""> <i class="icon-zoom-in"></i></a> <a class="btn" href="{{ item.get_add_to_cart_url }}">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>{{ item.price }}</a></h4>
 				</div>
 			  </div>
 			</li>
-			<li class="span3">
+			{% endfor %}
+			<!-- <li class="span3">
 			  <div class="thumbnail">
 				<a href="product_details.html"><img src="{% static 'store/themes/images/products/b2.jpg' %}" alt=""/></a>
 				<div class="caption">
@@ -466,7 +467,7 @@
 				   <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
 				</div>
 			  </div>
-			</li>
+			</li> -->
 		  </ul>
 
 
