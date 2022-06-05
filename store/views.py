@@ -529,3 +529,14 @@ class RequestRefundView(View):
             except ObjectDoesNotExist:
                 messages.warning(self.request, "This order doesn't exist")
                 return redirect('request-refund')
+
+
+
+# SEPARATE VIEWS FOR EACH CATEGORY
+
+def phone_view(request):
+    phones = Product.objects.filter(category="P").all()
+    context = {
+        "phones": phones
+    }
+    return render(request, 'store/phones.html', context)
