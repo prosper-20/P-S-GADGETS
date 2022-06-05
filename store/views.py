@@ -31,12 +31,22 @@ class HomeView(View):
     def get(self, *args, **kwargs):
         products = Product.objects.filter(type="F")[:4]
         products2 = Product.objects.filter(type="F")[3:]
+        electronics = Product.objects.filter(category="E")
+        phones = Product.objects.filter(category="P")
+        tablets = Product.objects.filter(category="T")
+        accessories = Product.objects.filter(category="A")
+        home_kitchen = Product.objects.filter(category="H")
         latests = Product.objects.filter(type="L")
         context = {
             'products': products,
             'latests': latests,
-            "products2": products2
-        }
+            "products2": products2,
+            "electronics": electronics,
+            "phones": phones,
+            "tablets": tablets,
+            "accessories": accessories,
+            'home_kitchen': home_kitchen
+            }
 
         return render(self.request, 'store/index.html', context)
 
