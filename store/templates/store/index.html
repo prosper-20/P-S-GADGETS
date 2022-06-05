@@ -212,7 +212,7 @@
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> ELECTRONICS [{{ electronics.count }}]</a>
 				<ul>
-				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+				<li><a class="active" href="{{ url 'camera-view' }}"><i class="icon-chevron-right"></i>Cameras ({{ camera.count }}) </a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
 				<li><a href="{% url 'phone_view' %}"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
@@ -243,7 +243,7 @@
 			</li>
 			<li><a href="products.html">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
 			<li><a href="{% url 'accessories_view' %}">ACCESSORIES [{{ accessories.count }}]</a></li>
-			<li><a href="products.html">COMPUTING [{{ computing.count }}]</a></li>
+			<li><a href="{% url 'computing-view' %}">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
 		<br/>
 		  <div class="thumbnail">
