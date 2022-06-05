@@ -569,3 +569,6 @@ def computing_view(request):
         "computing": computing
     }
     return render(request, 'store/computing.html', context)
+
+def discount_view(request):
+    return render(request, 'store/discount.html')
