@@ -547,3 +547,25 @@ def accessories_view(request):
         "accessories": accessories
     }
     return render(request, 'store/accessories.html', context)
+
+
+def tablets_view(request):
+    tablets = Product.objects.filter(category="T").all()
+    context = {
+        "tablets": tablets
+    }
+    return render(request, 'store/tablets.html', context)
+
+def camera_view(request):
+    camera = Product.objects.filter(category="CA").all()
+    context = {
+        "camera": camera
+    }
+    return render(request, 'store/camera.html', context)
+
+def computing_view(request):
+    computing = Product.objects.filter(category="C").all()
+    context = {
+        "computing": computing
+    }
+    return render(request, 'store/computing.html', context)
