@@ -571,4 +571,13 @@ def computing_view(request):
     return render(request, 'store/computing.html', context)
 
 def discount_view(request):
-    return render(request, 'store/discount.html')
+    products = Product.objects.all()
+    lis = []
+    for product in products:
+        if product.discount_price:
+            lis.append(product)
+    context = {
+        "lis": lis
+    }
+
+    return render(request, 'store/discount.html', context)
