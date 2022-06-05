@@ -310,18 +310,16 @@
 				  </div>
 				</li>
 				{% endfor %}
-					{% for item in products2 %}
-				<li class="span3">
+				<!-- <li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
-					<a href="product_details.html"><img src="{{ item.image.url }}" alt=""></a>
+					<a href="product_details.html"><img src="" alt=""></a>
 					<div class="caption">
 					  <h5>Product name</h5>
-					  <h4><a class="btn" href="{{ item.get_absolute_url }}">VIEW</a> <span class="pull-right">${{ item.price }}</span></h4>
+					  <h4><a class="btn" href="">VIEW</a> <span class="pull-right">${{ item.price }}</span></h4>
 					</div>
 				  </div>
-				</li>
-				{% endfor %}
+				</li> -->
 				<!-- <li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
@@ -346,17 +344,19 @@
 			  </div>
 			   <div class="item">
 			  <ul class="thumbnails">
+				  {% for product in products2 %}
 				<li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
-					<a href="product_details.html"><img src="{% static 'store/themes/images/products/5.jpg' %}" alt=""></a>
+					<a href="product_details.html"><img src="{{ product.image.url }}" alt=""></a>
 					<div class="caption">
-					  <h5>Product name</h5>
+					  <h5>{{ product.title }}</h5>
 					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
 					</div>
 				  </div>
 				</li>
-				<li class="span3">
+				{% endfor %}
+				<!-- <li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
 					<a href="product_details.html"><img src="{% static 'store/themes/images/products/6.jpg' %}" alt=""></a>
@@ -383,7 +383,7 @@
 					   <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
 					</div>
 				  </div>
-				</li>
+				</li> -->
 			  </ul>
 			  </div>
 			   <div class="item">
@@ -492,7 +492,7 @@
 					<div class="thumbnail">
 					  <a  href="{{ latest.get_absolute_url }}"><img src="{{ latest.image.url }}" alt=""/></a>
 					  <div class="caption">
-						<h5> <a href="{{ latest.get_absolute_url }}"><strong>{{ latest.title }}</strong></a></h5>
+						<h5> <a href="{{ latest.get_absolute_url }}"><strong>{{ latest.title|truncatechars:50 }}</strong></a></h5>
 						<p> 
 						  {{ latest.get_category_display }}
 						</p>
@@ -689,9 +689,9 @@
 			 </div>
 			<div id="socialMedia" class="span3 pull-right">
 				<h5>SOCIAL MEDIA </h5>
-				<a href="#"><img width="60" height="60" src="{% static 'store/themes/images/facebook.' %}'" title="facebook" alt="facebook"/></a>
-				<a href="#"><img width="60" height="60" src="{% static 'store/themes/images/twitter.' %}'" title="twitter" alt="twitter"/></a>
-				<a href="#"><img width="60" height="60" src="{% static 'store/themes/images/youtube.' %}'" title="youtube" alt="youtube"/></a>
+				<a href="#"><img width="60" height="60" src="{% static 'store/themes/images/facebook.png' %}'" title="facebook" alt="facebook"/></a>
+				<a href="#"><img width="60" height="60" src="{% static 'store/themes/images/twitter.png' %}'" title="twitter" alt="twitter"/></a>
+				<a href="#"><img width="60" height="60" src="{% static 'store/themes/images/youtube.png' %}'" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
 		<p class="pull-right">&copy; Bootshop</p>
