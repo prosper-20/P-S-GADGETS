@@ -214,7 +214,7 @@
 				<ul>
 				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
+				<li><a href="{% url 'phone_view' %}"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
 				</ul>
 			</li>
@@ -242,7 +242,7 @@
 			</ul>
 			</li>
 			<li><a href="products.html">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
-			<li><a href="products.html">ACCESSORIES [{{ accessories.count }}]</a></li>
+			<li><a href="{% url 'accessories_view' %}">ACCESSORIES [{{ accessories.count }}]</a></li>
 			<li><a href="products.html">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
 		<br/>

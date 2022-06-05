@@ -3,7 +3,7 @@ from django.urls import path
 
 from store.models import Order
 from . import views
-from .views import add_to_cart, remove_from_cart, OrderSummaryView, remove_single_item_from_cart, CheckoutView, PaymentView, HomeView, AddCouponView, RequestRefundView
+from .views import add_to_cart, remove_from_cart, OrderSummaryView, remove_single_item_from_cart, CheckoutView, PaymentView, HomeView, AddCouponView, RequestRefundView, phone_view, accessories_view
 
 urlpatterns = [
     # path("", views.Home.as_view(), name="home"),
@@ -16,5 +16,7 @@ urlpatterns = [
     path("order-summary/", OrderSummaryView.as_view(), name="order-summary"),
     path('remove-single-item-from-cart/<slug>/', remove_single_item_from_cart, name="remove-single-item-from-cart"),
     path('payment/<payment_option>/', PaymentView.as_view(), name="payment"),
-    path("request-refund/", RequestRefundView.as_view(), name="request-refund")
+    path("request-refund/", RequestRefundView.as_view(), name="request-refund"),
+    path("category/phones/", phone_view, name="phone_view"),
+    path("category/accessory/", accessories_view, name="accessories_view"),
 ]

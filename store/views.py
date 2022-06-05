@@ -540,3 +540,10 @@ def phone_view(request):
         "phones": phones
     }
     return render(request, 'store/phones.html', context)
+
+def accessories_view(request):
+    accessories = Product.objects.filter(category="A").all()
+    context = {
+        "accessories": accessories
+    }
+    return render(request, 'store/accessories.html', context)
