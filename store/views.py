@@ -29,11 +29,13 @@ class Home(ListView):
     
 class HomeView(View):
     def get(self, *args, **kwargs):
-        products = Product.objects.filter(type="F")
+        products = Product.objects.filter(type="F")[:3]
+        products2 = Product.objecta.filter(type="F")[3:]
         latests = Product.objects.filter(type="L")
         context = {
             'products': products,
-            'latests': latests
+            'latests': latests,
+            "products2": products2
         }
 
         return render(self.request, 'store/index.html', context)
