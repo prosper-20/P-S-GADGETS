@@ -38,6 +38,7 @@ class HomeView(View):
         home_kitchen = Product.objects.filter(category="H").all()
         camera = Product.objects.filter(category="CA").all()
         computing = Product.objects.filter(category="C").all()
+        clothing = Product.objects.filter(category="CL").all()
         food_and_beverages = Product.objects.filter(category="FB").all()
         latests = Product.objects.filter(type="L")
         context = {
@@ -51,7 +52,8 @@ class HomeView(View):
             'home_kitchen': home_kitchen,
             "camera": camera,
             "computing": computing,
-            "food_and_beverages": food_and_beverages
+            "food_and_beverages": food_and_beverages,
+            "clothing": clothing
             }
 
         return render(self.request, 'store/index.html', context)
@@ -589,6 +591,15 @@ def food_view(request):
     food_and_beverages = Product.objects.filter(category="FB").all()
     context = {
         "food_and_beverages": food_and_beverages
+    }
+
+    return render(request, 'store/food_and_beverages.html', context)
+
+
+def clothing_view(request):
+    clothing = Product.objects.filter(category="CL").all()
+    context = {
+        "clothing": clothing
     }
 
     return render(request, 'store/food_and_beverages.html', context)
