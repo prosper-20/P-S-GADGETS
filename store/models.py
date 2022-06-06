@@ -15,7 +15,8 @@ CATEGORY_CHOICES = (
     ('E', 'Electronics'),
     ('H', 'Home & Kitchen'),
     ('A', 'Accessories'),
-    ('CA', 'Camera')
+    ('CA', 'Camera'),
+    ('FB', 'Food & Beverages')
 )
 
 LABEL_CHOICES = (
