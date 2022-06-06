@@ -30,7 +30,7 @@ class Home(ListView):
 class HomeView(View):
     def get(self, *args, **kwargs):
         products = Product.objects.filter(type="F")[:4]
-        products2 = Product.objects.filter(type="F")[3:]
+        products2 = Product.objects.filter(type="F")[3:7]
         electronics = Product.objects.filter(category="E").all()
         phones = Product.objects.filter(category="P").all()
         tablets = Product.objects.filter(category="T").all()
@@ -539,32 +539,10 @@ class RequestRefundView(View):
 # SEPARATE VIEWS FOR EACH CATEGORY
 
 def phone_view(request):
-    products = Product.objects.filter(type="F")[:4]
-    products2 = Product.objects.filter(type="F")[3:]
-    electronics = Product.objects.filter(category="E").all()
     phones = Product.objects.filter(category="P").all()
-    tablets = Product.objects.filter(category="T").all()
-    accessories = Product.objects.filter(category="A").all()
-    home_kitchen = Product.objects.filter(category="H").all()
-    camera = Product.objects.filter(category="CA").all()
-    computing = Product.objects.filter(category="C").all()
-    clothing = Product.objects.filter(category="CL").all()
-    food_and_beverages = Product.objects.filter(category="FB").all()
-    latests = Product.objects.filter(type="L")
     context = {
-        'products': products,
-        'latests': latests,
-        "products2": products2,
-        "electronics": electronics,
-        "phones": phones,
-        "tablets": tablets,
-        "accessories": accessories,
-        'home_kitchen': home_kitchen,
-        "camera": camera,
-        "computing": computing,
-        "food_and_beverages": food_and_beverages,
-        "clothing": clothing
-        }
+        "phones": phones
+    }
     return render(request, 'store/phones.html', context)
 
 def accessories_view(request):

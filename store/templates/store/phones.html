@@ -298,7 +298,7 @@
 				  <i class="tag"></i>
 					<a href="{{ phone.get_absolute_url }}"><img src="{{ phone.image.url }}" alt=""></a>
 					<div class="caption">
-					  <h5><strong>{{ phones.title|truncatechars:20 }}</strong></h5>
+					  <h5><strong>{{ phone.title|truncatechars:20 }}</strong></h5>
 					  <h4><a class="btn" href="{{ phone.get_absolute_url }}">VIEW</a> <span class="pull-right">
 						<span>&#8358;</span>
 						  {% if phone.discount_price %}
