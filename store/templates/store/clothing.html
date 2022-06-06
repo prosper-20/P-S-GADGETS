@@ -85,7 +85,7 @@
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="{% url 'discount-view' %}">Specials Offer</a></li>
+	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
 	 <li class=""><a href="normal.html">Delivery</a></li>
 	 <li class=""><a href="contact.html">Contact</a></li>
 	 <li class="">
@@ -212,13 +212,13 @@
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> ELECTRONICS [{{ electronics.count }}]</a>
 				<ul>
-				<li><a class="active" href="{% url 'camera-view' %}"><i class="icon-chevron-right"></i>Cameras ({{ camera.count }}) </a></li>
+				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="{% url 'phone_view' %}"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
 				</ul>
 			</li>
-			<li class="subMenu"><a> CLOTHES [{{ Clothing.count }}] </a>
+			<li class="subMenu"><a> CLOTHES [840] </a>
 			<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
@@ -229,7 +229,7 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
 			</ul>
 			</li>
-			<li class="subMenu"><a>FOOD AND BEVERAGES [{{ food_and_beverages.count }}]</a>
+			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
 				<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
@@ -242,37 +242,37 @@
 			</ul>
 			</li>
 			<li><a href="products.html">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
-			<li><a href="{% url 'accessories_view' %}">ACCESSORIES [{{ accessories.count }}]</a></li>
-			<li><a href="{% url 'computing-view' %}">COMPUTING [{{ computing.count }}]</a></li>
+			<li><a href="products.html">ACCESSORIES [{{ accessories.count }}]</a></li>
+			<li><a href="products.html">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
 		<br/>
 		  <div class="thumbnail">
 			<img src="{% static 'store/themes/images/products/panasonic.jpg' %}" alt="Bootshop panasonoc New camera"/>
 			<div class="caption">
 			  <h5>Panasonic</h5>
-				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>222.00</a></h4>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 			</div>
 		  </div><br/>
 			<div class="thumbnail">
-				<img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/65/7666011/1.jpg?9336" title="Bootshop New Kindel" alt="Bootshop Kindel">
+				<img src="{% static 'store/themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
-				  <h5>Samsung Galaxy A23</h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>150000.0</a></h4>
+				  <h5>Kindle</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 				</div>
 			  </div><br/>
 			  <!-- YOU JUST REEATED THSIIS TO COVER FOR THE DEAL OF THE DAY -->
 			  <div class="thumbnail">
-				<img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/67/078027/1.jpg?3335" title="Bootshop New Kindel" alt="Bootshop Kindel">
+				<img src="{% static 'store/themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
-				  <h5>Qasa 18 Inches Electric Standing Fan </h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>65000.0</a></h4>
+				  <h5>Kindle</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 				</div>
 			  </div><br/>
 			  <div class="thumbnail">
-				<img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/41/346167/1.jpg?2810" title="Bootshop New Kindel" alt="Bootshop Kindel">
+				<img src="{% static 'store/themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
-				  <h5>Lutian 3.5KVA Key Start Generator 100% Copper -</h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>160000.0</a></h4>
+				  <h5>Kindle</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 				</div>
 			  </div><br/>
 			  
@@ -286,25 +286,25 @@
 <!-- Sidebar end=============================================== -->
 		<div class="span9">		
 			<div class="well well-small">
-			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
+			<h4>Category: Clothing<small class="pull-right">200+ featured products</small></h4>
 			<div class="row-fluid">
 			<div id="featured" class="carousel slide">
 			<div class="carousel-inner">
 			  <div class="item active">
 			  <ul class="thumbnails">
-				  {% for product in products %}
+				  {% for item in clothing %}
 				<li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
-					<a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a>
+					<a href="{{ item.get_absolute_url }}"><img src="{{ item.image.url }}" alt=""></a>
 					<div class="caption">
-					  <h5><strong>{{ product.title|truncatechars:20 }}</strong></h5>
-					  <h4><a class="btn" href="{{ product.get_absolute_url }}">VIEW</a> <span class="pull-right">
+					  <h5><strong>{{ item.title|truncatechars:20 }}</strong></h5>
+					  <h4><a class="btn" href="{{ item.get_absolute_url }}">VIEW</a> <span class="pull-right">
 						<span>&#8358;</span>
-						  {% if product.discount_price %}
-						  {{ product.discount_price}}
+						  {% if item.discount_price %}
+						  {{ item.discount_price}}
 						  {% else %}
-						  {{ product.price }}
+						  {{ item.price }}
 						{% endif %}</h4>
 					</div>
 				  </div>
@@ -348,10 +348,10 @@
 				<li class="span3">
 				  <div class="thumbnail">
 				  <i class="tag"></i>
-					<a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a>
+					<a href="product_details.html"><img src="{{ product.image.url }}" alt=""></a>
 					<div class="caption">
-					  <h5>{{ product.title|truncatechars:20 }}</h5>
-					  <h4><a class="btn" href="{{ product.get_absolute_url }}">VIEW</a> <span class="pull-right"><span>&#8358;</span>{{ product.price }}</span></h4>
+					  <h5>{{ product.title }}</h5>
+					  <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
 					</div>
 				  </div>
 				</li>
@@ -683,7 +683,7 @@
 				<h5>OUR OFFERS</h5>
 				<a href="#">NEW PRODUCTS</a> 
 				<a href="#">TOP SELLERS</a>  
-				<a href="{% url 'discount-view' %}">SPECIAL OFFERS</a>  
+				<a href="special_offer.html">SPECIAL OFFERS</a>  
 				<a href="#">MANUFACTURERS</a> 
 				<a href="#">SUPPLIERS</a> 
 			 </div>

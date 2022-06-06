@@ -602,6 +602,6 @@ def clothing_view(request):
         "clothing": clothing
     }
 
-    return render(request, 'store/food_and_beverages.html', context)
+    return render(request, 'store/clothing.html', context)
 
 
