@@ -84,14 +84,32 @@
 		</select> 
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form> -->
-	<form action="{% url 'search_products' %}" class="form-inline" method="post">
+
+	<!-- THIS IS THE WORKING FORM  -->
+	<!-- <form action="{% url 'search_products' %}" class="form-inline" method="post">
 		{% csrf_token %}
 		<div class="md-form my-0">
 		  <input type="search" name="searched" class="form-control me-2"
 			  placeholder="Search Products" aria-label="Search">
 			  <button class="btn btn-outline-info btn-md" type="submit"><i class="fas fa-search" style="color: antiquewhite;"></i></button>
 		</div>
-	</form>
+	</form> -->
+
+	<!-- END OF WORKING FORM -->
+
+	<form class="form-inline navbar-search" method="post" action="{% url 'search_products' %}">
+		{% csrf_token %}
+		<input id="srchFld" name="searched" placeholder="Search Products" class="srchTxt" aria-label="Search" type="search" />
+		  <select class="srchTxt">
+			<option>All</option>
+			<option>CLOTHES </option>
+			<option>FOOD AND BEVERAGES </option>
+			<option>HEALTH & BEAUTY </option>
+			<option>SPORTS & LEISURE </option>
+			<option>BOOKS & ENTERTAINMENTS </option>
+		</select> 
+		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+    </form>
     <ul id="topMenu" class="nav pull-right">
 	 <li class=""><a href="{% url 'discount-view' %}">Specials Offer</a></li>
 	 <li class=""><a href="normal.html">Delivery</a></li>
@@ -148,7 +166,7 @@
 		<div class="carousel-inner">
 		  <div class="item active">
 		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="{% static 'store/themes/images/carousel/6.png' %}" alt="special offers"/></a>
+			<a href="{% url 'register' %}"><img style="width:100%" src="{% static 'store/themes/images/carousel/6.png' %}" alt="special offers"/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -157,7 +175,7 @@
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="{% static 'store/themes/images/carousel/2.png' %}" alt=""/></a>
+			<a href="{% url 'register' %}"><img style="width:100%" src="{% static 'store/themes/images/carousel/2.png' %}" alt=""/></a>
 				<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -166,7 +184,7 @@
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="register.html"><img src="{% static 'store/themes/images/carousel/3.png' %}" alt=""/></a>
+			<a href="{% url 'register' %}"><img src="{% static 'store/themes/images/carousel/3.png' %}" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -176,7 +194,7 @@
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="register.html"><img src="{% static 'store/themes/images/carousel/4.png' %}" alt=""/></a>
+			<a href="{% url 'register' %}"><img src="{% static 'store/themes/images/carousel/4.png' %}" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -186,7 +204,7 @@
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="register.html"><img src="{% static 'store/themes/images/carousel/5.png' %}" alt=""/></a>
+			<a href="{% url 'register' %}"><img src="{% static 'store/themes/images/carousel/5.png' %}" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -195,7 +213,7 @@
 		  </div>
 		   <div class="item">
 		   <div class="container">
-			<a href="register.html"><img src="{% static 'store/themes/images/carousel/6.png' %}" alt=""/></a>
+			<a href="{% url 'register' %}"><img src="{% static 'store/themes/images/carousel/6.png' %}" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
