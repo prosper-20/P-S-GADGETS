@@ -40,6 +40,7 @@ class HomeView(View):
         computing = Product.objects.filter(category="C").all()
         clothing = Product.objects.filter(category="CL").all()
         food_and_beverages = Product.objects.filter(category="FB").all()
+        food_and_beverages = Product.objects.filter(category="FB").all()
         latests = Product.objects.filter(type="L")
         context = {
             'products': products,

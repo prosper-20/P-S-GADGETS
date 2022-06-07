@@ -17,7 +17,8 @@ CATEGORY_CHOICES = (
     ('A', 'Accessories'),
     ('CA', 'Camera'),
     ('FB', 'Food & Beverages'),
-    ('CL', 'Clothing')
+    ('CL', 'Clothing'),
+    ('S', 'Sound & Vision')
 )
 
 LABEL_CHOICES = (
