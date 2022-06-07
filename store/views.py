@@ -40,7 +40,7 @@ class HomeView(View):
         computing = Product.objects.filter(category="C").all()
         clothing = Product.objects.filter(category="CL").all()
         food_and_beverages = Product.objects.filter(category="FB").all()
-        food_and_beverages = Product.objects.filter(category="FB").all()
+        sound_and_vision = Product.objects.filter(category="S").all()
         latests = Product.objects.filter(type="L")
         context = {
             'products': products,
@@ -604,5 +604,12 @@ def clothing_view(request):
     }
 
     return render(request, 'store/clothing.html', context)
+
+def sound_view(request):
+    sound_and_vision = Product.objects.filter(category="S").all()
+    context = {
+        "sound_and_vision": sound_and_vision
+    }
+    return render(request, 'store/sound_and_vision.html', context)
 
 
