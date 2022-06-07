@@ -54,7 +54,8 @@ class HomeView(View):
             "camera": camera,
             "computing": computing,
             "food_and_beverages": food_and_beverages,
-            "clothing": clothing
+            "clothing": clothing,
+            "sound_and_vision": sound_and_vision
             }
 
         return render(self.request, 'store/index.html', context)

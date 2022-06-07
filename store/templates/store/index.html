@@ -215,7 +215,7 @@
 				<li><a class="active" href="{% url 'camera-view' %}"><i class="icon-chevron-right"></i>Cameras ({{ camera.count }}) </a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
 				<li><a href="{% url 'phone_view' %}"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+				<li><a href="{% url 'sound-view' %}"><i class="icon-chevron-right"></i>Sound & Vision ({{ sound_and_vision.count }})</a></li>
 				</ul>
 			</li>
 			<li class="subMenu"><a> CLOTHES [{{ Clothing.count }}] </a>
@@ -241,7 +241,7 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
 			</ul>
 			</li>
-			<li><a href="products.html">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
+			<li><a href="products.htm">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
 			<li><a href="{% url 'accessories_view' %}">ACCESSORIES [{{ accessories.count }}]</a></li>
 			<li><a href="{% url 'computing-view' %}">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
