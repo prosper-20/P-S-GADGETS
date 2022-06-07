@@ -72,7 +72,7 @@
 </a>
   <div class="navbar-inner">
     <a class="brand" href="index.html"><img src="{% static 'store/themes/images/logo.png' %}" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
+		<!-- <form class="form-inline navbar-search" method="post" action="products.html" >
 		<input id="srchFld" class="srchTxt" type="text" />
 		  <select class="srchTxt">
 			<option>All</option>
@@ -83,7 +83,15 @@
 			<option>BOOKS & ENTERTAINMENTS </option>
 		</select> 
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-    </form>
+    </form> -->
+	<form action="{% url 'search_products' %}" class="form-inline" method="post">
+		{% csrf_token %}
+		<div class="md-form my-0">
+		  <input type="search" name="searched" class="form-control me-2"
+			  placeholder="Search Meals" aria-label="Search">
+			  <button class="btn btn-outline-info btn-md" type="submit"><i class="fas fa-search" style="color: antiquewhite;"></i></button>
+		</div>
+	</form>
     <ul id="topMenu" class="nav pull-right">
 	 <li class=""><a href="{% url 'discount-view' %}">Specials Offer</a></li>
 	 <li class=""><a href="normal.html">Delivery</a></li>

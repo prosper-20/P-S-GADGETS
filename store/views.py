@@ -22,6 +22,18 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 def create_ref_code():
     return "".join(random.choices(string.ascii_lowercase + string.digits, k=20))
 
+def search_products(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        # This returns the results of the user's search
+        items = Product.objects.filter(slug__icontains=searched)
+        # items_all = Item.objects.all()
+        # rice_items = Item.objects.filter(title__icontains="rice")
+        # You cahneged from new_search_posts.html to ....
+        return render(request, "store/search_products.html", {'searched': searched, 'items': items})
+    else:
+        return render(request, "store/search_products.html")
+
 class Home(ListView):
     model = Product
     template_name = 'store/index.html'
