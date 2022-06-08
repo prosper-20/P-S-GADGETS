@@ -255,7 +255,7 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
 			</ul>
 			</li>
-			<li class="subMenu"><a>FOOD AND BEVERAGES [{{ food_and_beverages.count }}]</a>
+			<li class="subMenu"><a href="{% url 'food-view' %}">FOOD AND BEVERAGES [{{ food_and_beverages.count }}]</a>
 				<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
@@ -267,7 +267,7 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
 			</ul>
 			</li>
-			<li><a href="products.htm">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
+			<li><a href="{% url 'food-view' %}">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
 			<li><a href="{% url 'accessories_view' %}">ACCESSORIES [{{ accessories.count }}]</a></li>
 			<li><a href="{% url 'computing-view' %}">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
