@@ -626,3 +626,11 @@ def sound_view(request):
     return render(request, 'store/sound_and_vision.html', context)
 
 
+def home_and_kitchen(request):
+    home_kitchen = Product.objects.filter(category="H").all()
+    context = {
+        "home_kitchen": home_kitchen
+    }
+    return render(request, 'store/home_and_kitchen.html', context)
+
+
