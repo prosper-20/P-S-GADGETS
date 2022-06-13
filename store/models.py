@@ -194,3 +194,15 @@ def userprofile_receiver(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
+
+
+
+class Comment(models.Model):
+    product = models.ForeignKey(Product, related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    body = models.TextField('Enter your commment...')
+    date_added = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.name}"

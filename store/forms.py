@@ -7,6 +7,7 @@ from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from store.models import Comment
 
 PAYMENT_CHOICES = (
     ('S', 'Stripe'),
@@ -63,6 +64,15 @@ class PaymentForm(forms.Form):
     stripeToken = forms.CharField(required=False)
     save = forms.BooleanField(required=False)
     use_default = forms.BooleanField(required=False)
+
+
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment 
+
+        fields = ["name", "body"]
 
 
 

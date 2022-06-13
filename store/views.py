@@ -14,6 +14,10 @@ from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 import stripe
 import random
 import string
+from store.models import Comment
+from .forms import CommentForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
@@ -33,6 +37,18 @@ def search_products(request):
         return render(request, "store/search_products.html", {'searched': searched, 'items': items})
     else:
         return render(request, "store/search_products.html")
+
+
+
+
+class PostCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    # success_url = "/"
+    template_name = "blog/post_comment_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
 
 class Home(ListView):
     model = Product
