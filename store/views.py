@@ -45,9 +45,10 @@ class ProductCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = "store/post_comment_form.html"
+    success_url = "/"
 
-    def get_success_url(self):
-        return reverse_lazy('product-detail', kwargs={'slug': self.kwargs['slug']})
+    # def get_success_url(self):
+    #     return reverse_lazy('product-detail', kwargs={'slug': self.kwargs['slug']})
 
 class Home(ListView):
     model = Product
