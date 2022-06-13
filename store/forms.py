@@ -72,7 +72,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment 
 
-        fields = ["name", "body"]
+        fields = ["product","name", "body"]
 
 
 
