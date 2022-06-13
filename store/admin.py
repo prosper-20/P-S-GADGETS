@@ -1,6 +1,6 @@
 from re import U
 from django.contrib import admin
-from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address, UserProfile
+from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address, UserProfile, Comment
 
 # Register your models here.
 
@@ -52,3 +52,4 @@ admin.site.register(Refund)
 admin.site.register(Address, AddressAdmin)
 
 admin.site.register(UserProfile)
+admin.site.register(Comment)
