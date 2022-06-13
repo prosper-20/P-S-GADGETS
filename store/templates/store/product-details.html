@@ -313,7 +313,25 @@
 				With a generous 18x Fujinon optical zoom lens, the S2950 really packs a punch, especially when matched with its 14 megapixel sensor, large 3.0" LCD screen and 720p HD (30fps) movie capture.
 				</p>
 
-				<h5>Electric powered Fujinon 18x zoom lens</h5>
+				<div class="pt-5 mt-5">
+					<h3 class="mb-5">{{ post.comments.count }} Comments</h3>
+					<ul class="comment-list">
+					  {% for comment in post.comments.all %}
+					  <li class="comment">
+						<div class="vcard bio">
+						  <img src="/media/default.jpg" alt="Image placeholder">
+						</div>
+						<div class="comment-body">
+						  <h3>{{ comment.name }}</h3>
+						  <div class="meta">{{ comment.date_posted }}</div>
+						  <p>{{ comment.body }}</p>
+						  <p><a href="#" class="reply">Reply</a></p>
+						</div>
+					  </li>
+					  {% endfor %}
+					</ul>
+
+				<!-- <h5>Electric powered Fujinon 18x zoom lens</h5>
 				<p>
 				The S2950 sports an impressive 28mm – 504mm* high precision Fujinon optical zoom lens. Simple to operate with an electric powered zoom lever, the huge zoom range means that you can capture all the detail, even when you're at a considerable distance away. You can even operate the zoom during video shooting. Unlike a bulky D-SLR, bridge cameras allow you great versatility of zoom, without the hassle of carrying a bag of lenses.
 				</p>
@@ -325,7 +343,7 @@
 				<h5>Sharp, clear shots</h5>
 				<p>
 				Even at the longest zoom settings or in the most challenging of lighting conditions, the S2950 is able to produce crisp, clean results. With its mechanically stabilised 1/2 3", 14 megapixel CCD sensor, and high ISO sensitivity settings, Fujifilm's Dual Image Stabilisation technology combines to reduce the blurring effects of both hand-shake and subject movement to provide superb pictures.
-				</p>
+				</p> -->
               </div>
 		<div class="tab-pane fade" id="profile">
 		<div id="myTab" class="pull-right">

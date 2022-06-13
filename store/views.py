@@ -41,14 +41,13 @@ def search_products(request):
 
 
 
-class PostCommentView(CreateView):
+class ProductCommentView(CreateView):
     model = Comment
     form_class = CommentForm
-    # success_url = "/"
     template_name = "store/post_comment_form.html"
 
     def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('product-detail', kwargs={'slug': self.kwargs['slug']})
 
 class Home(ListView):
     model = Product

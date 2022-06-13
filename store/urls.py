@@ -3,13 +3,14 @@ from django.urls import path
 
 from store.models import Order
 from . import views
-from .views import add_to_cart, remove_from_cart, OrderSummaryView, remove_single_item_from_cart, CheckoutView, PaymentView, HomeView, AddCouponView, RequestRefundView, phone_view, accessories_view, computing_view, camera_view, tablets_view, discount_view, food_view, clothing_view, sound_view, search_products, home_and_kitchen
+from .views import add_to_cart, remove_from_cart, OrderSummaryView, remove_single_item_from_cart, CheckoutView, PaymentView, HomeView, AddCouponView, RequestRefundView, phone_view, accessories_view, computing_view, camera_view, tablets_view, discount_view, food_view, clothing_view, sound_view, search_products, home_and_kitchen, ProductCommentView
 
 urlpatterns = [
     # path("", views.Home.as_view(), name="home"),
     path('', HomeView.as_view(), name='home'),
     path('search/', views.search_products, name="search_products"),
     path("product/<slug:slug>/", views.Detail.as_view(), name="product-detail"),
+    path("product/<slug:slug>/comment/", ProductCommentView.as_view(), name="product-comment"),
     path("checkout/", CheckoutView.as_view(), name="checkout"),
     path("add-to-cart/<slug>/", add_to_cart, name="add-to-cart"),
     path("add-coupon/", AddCouponView.as_view(), name="add-coupon"),
