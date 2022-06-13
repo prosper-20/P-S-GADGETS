@@ -45,7 +45,7 @@ class PostCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     # success_url = "/"
-    template_name = "blog/post_comment_form.html"
+    template_name = "store/post_comment_form.html"
 
     def get_success_url(self):
         return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
