@@ -28,7 +28,9 @@ urlpatterns = [
     path("register/2/", user_views.register2, name="register2"),
     path('login/', user_views.login, name="login"),
     path("logout/", user_views.logout, name="logout"),
-    path("product-discount/", discount_view, name="discount-view")
+    path("product-discount/", discount_view, name="discount-view"),
+
+    path("api/products/", include("store.api.urls"))
 ]
 
 if settings.DEBUG:
