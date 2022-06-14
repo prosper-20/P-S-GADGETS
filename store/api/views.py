@@ -1,8 +1,10 @@
+from urllib import response
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from store.models import Product
 from store.api.serializers import ProductSerializers
+from django.contrib.auth.models import User
 
 
 
@@ -63,3 +65,16 @@ def api_delete_view(request, slug):
             data['failure'] = "delete failed"
         return Response(data)
 
+@api_view(['POST'])
+def api_create_view(request):
+    user = User.objects.get(pk=1)
+
+    product = Product()
+
+    if request.method == "POST":
+        serializer = ProductSerializers(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
