@@ -22,6 +22,9 @@ from django.views.generic import CreateView
 stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
+def tester(request):
+    return render(request, 'store/order_summary_2.html')
+
 
 def create_ref_code():
     return "".join(random.choices(string.ascii_lowercase + string.digits, k=20))
