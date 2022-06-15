@@ -273,7 +273,8 @@
                   {% if object.get_total %}
                   <td colspan="6" style="text-align:right">Total Price:	</td>
 
-                  <td> $228.00</td>
+                  <td> <strong><span>&#8358;</span>{{ object.get_total}}</strong></td>
+                  {% endif %}
                 </tr>
 				 <tr>
                   <td colspan="6" style="text-align:right">Total Discount:	</td>
