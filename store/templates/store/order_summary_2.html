@@ -228,18 +228,25 @@
 				</tr>
               </thead>
               <tbody>
+                {% for order_item in object.items.all %}
                 <tr>
-                  <td> <img width="60" src="{% static 'store/themes/images/products/4.jpg' %}" alt=""/></td>
-                  <td>MASSA AST<br/>Color : black, Material : metal</td>
+                  <!-- <td> <img width="60" src="{% static 'store/themes/images/products/4.jpg' %}" alt=""/></td> -->
+                  <td> <img width="60" src="{{ order_item.item.image.url }}" alt=""/></td>
+                  <td>{{ order_item.item.title }}<br/>Color : black, Material : metal</td>
 				  <td>
-					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+					<div class="input-append"><input class="span1" style="max-width:34px" placeholder="{{ order_item.quantity }}" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><a href="{% url 'remove-single-item-from-cart' order_item.item.slug %}"><i class="icon-minus"></i></a></button><button class="btn" type="button"><a href="{% url 'add-to-cart' order_item.item.slug %}"><i class="icon-plus"></i></a></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
 				  </td>
-                  <td>$120.00</td>
-                  <td>$25.00</td>
+                  <td><span>&#8358;</span>{{ order_item.item.price }}</td>
+                  {% if order_item.item.discount_price %}
+                  <td><span>&#8358;</span>{{ order_item.get_total_discount_item_price }}</td>
+                  {% else %}
+                  <span>&#8358;</span>{{ order_item.get_total_item_price }}
+                  {% endif %}
                   <td>$15.00</td>
-                  <td>$110.00</td>
+                  <td><strong><span>&#8358;</span>{{ object.get_total}}</strong></td>
                 </tr>
-				<tr>
+                {% endfor %}
+				<!-- <tr>
                   <td> <img width="60" src="{% static 'store/themes/images/products/8.jpg' %}" alt=""/></td>
                   <td>MASSA AST<br/>Color : black, Material : metal</td>
 				  <td>
@@ -260,7 +267,7 @@
                   <td>$25.00</td>
                   <td>$15.00</td>
                   <td>$110.00</td>
-                </tr>
+                </tr> -->
 				
                 <tr>
                   <td colspan="6" style="text-align:right">Total Price:	</td>
