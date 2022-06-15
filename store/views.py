@@ -22,8 +22,17 @@ from django.views.generic import CreateView
 stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
-def tester(request):
-    return render(request, 'store/order_summary_2.html')
+class tester(View):
+    def get(self, *args, **kwargs):
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            context = {
+                'object': order
+            }
+            return render(self.request, "store/order_summary_2.html", context)
+        except ObjectDoesNotExist:
+            messages.error(self.request, 'You do not have an active order')
+            return redirect('/')
 
 
 def create_ref_code():
