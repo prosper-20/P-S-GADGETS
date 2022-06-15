@@ -242,8 +242,7 @@
                   {% else %}
                   <span>&#8358;</span>{{ order_item.get_total_item_price }}
                   {% endif %}
-                  <td><span>&#8358;</span>{{ order_item.get_amount_saved }}</td>
-                  <td><strong><span>&#8358;</span>{{ object.get_total}}</strong></td>
+                  
                 </tr>
                 {% endfor %}
 				<!-- <tr>
@@ -278,15 +277,26 @@
                 </tr>
 				 <tr>
                   <td colspan="6" style="text-align:right">Total Discount:	</td>
-                  <td> $50.00</td>
+
+                  {% if order_item.item.discount_price %}
+                  <td> <strong><span>&#8358;</span>{{ order_item.get_amount_saved }}</td>
+                  {% else %}
+                  <td> <strong><span>&#8358;</span>0.00</td>
+                  {% endif %}
                 </tr>
                  <tr>
                   <td colspan="6" style="text-align:right">Total Tax:	</td>
-                  <td> $31.00</td>
+                  <td> <strong><span>&#8358;</span>0.00</td>
                 </tr>
 				 <tr>
-                  <td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
-                  <td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
+                    {% if order_item.item.discount_price %}
+                  <td colspan="6" style="text-align:right"><strong>TOTAL ({{object.get_total}} - {{ order_item.get_amount_saved }} + 0) =</strong></td>
+                  {% else %}
+                  <td colspan="6" style="text-align:right"><strong>TOTAL ({{object.get_total}} + 0) =</strong></td>
+                  {% endif %}
+                  {% if object.get_total %}
+                  <td class="label label-important" style="display:block"> <strong> <span>&#8358;</span>{{ object.get_total}}</strong></td>
+                  {% endif %}
                 </tr>
 				</tbody>
             </table>
