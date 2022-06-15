@@ -30,5 +30,5 @@ urlpatterns = [
     path("category/food-beverages/", food_view, name="food-view"),
     path("product/discount/", discount_view, name="discount-view"),
 
-    path("tester/", tester, name="tester")
+    path("tester/", tester.as_view(), name="tester")
 ]
