@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_template_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -114,7 +115,7 @@
         {% if request.user.is_authenticated %}
 		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{request.user|cart_item_count }}<span class="badge badge-warning pull-right">$155.00</span></a></div>
         {% else %}
-        <div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+        <div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">2 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
         {% endif %}
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> ELECTRONICS [230]</a>
@@ -180,7 +181,7 @@
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active"> SHOPPING CART</li>
     </ul>
-	<h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
+	<h3>  SHOPPING CART [ <small style="font-size: large;"><strong style="color: black;">{{ request.user|cart_item_count }} item(s)</strong></small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 	<hr class="soft"/>
 	<table class="table table-bordered">
 		<tr><th> I AM ALREADY REGISTERED  </th></tr>
