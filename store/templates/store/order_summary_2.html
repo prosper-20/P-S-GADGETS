@@ -223,7 +223,7 @@
                   <th>Quantity/Update</th>
 				  <th>Price</th>
                   <th>Discount</th>
-                  <th>Tax</th>
+                  <th>Saving</th>
                   <th>Total</th>
 				</tr>
               </thead>
@@ -242,7 +242,7 @@
                   {% else %}
                   <span>&#8358;</span>{{ order_item.get_total_item_price }}
                   {% endif %}
-                  <td>$15.00</td>
+                  <td><span>&#8358;</span>{{ order_item.get_amount_saved }}</td>
                   <td><strong><span>&#8358;</span>{{ object.get_total}}</strong></td>
                 </tr>
                 {% endfor %}
@@ -270,7 +270,9 @@
                 </tr> -->
 				
                 <tr>
+                  {% if object.get_total %}
                   <td colspan="6" style="text-align:right">Total Price:	</td>
+
                   <td> $228.00</td>
                 </tr>
 				 <tr>
