@@ -88,6 +88,7 @@ class HomeView(View):
         food_and_beverages = Product.objects.filter(category="FB").all()
         sound_and_vision = Product.objects.filter(category="S").all()
         latests = Product.objects.filter(type="L")
+        products_total = Product.objects.all()
         context = {
             'products': products,
             'latests': latests,
@@ -101,7 +102,8 @@ class HomeView(View):
             "computing": computing,
             "food_and_beverages": food_and_beverages,
             "clothing": clothing,
-            "sound_and_vision": sound_and_vision
+            "sound_and_vision": sound_and_vision,
+            "products_total": products_total
             }
 
         return render(self.request, 'store/index.html', context)
@@ -437,9 +439,39 @@ class OrderSummaryView(LoginRequiredMixin, View):
 #     return render(request, 'store/product-details.html', context)
 
 class Detail(DetailView):
-    model = Product
-    template_name = "store/product-details.html"
-    context_object_name = "product"
+    # model = Product
+    # template_name = "store/product-details.html"
+    # context_object_name = "product"
+    def get(self, request, slug, *args, **kwargs):
+        product = Product.objects.get(slug=slug)
+        electronics = Product.objects.filter(category="E").all()
+        phones = Product.objects.filter(category="P").all()
+        tablets = Product.objects.filter(category="T").all()
+        accessories = Product.objects.filter(category="A").all()
+        home_kitchen = Product.objects.filter(category="H").all()
+        camera = Product.objects.filter(category="CA").all()
+        computing = Product.objects.filter(category="C").all()
+        clothing = Product.objects.filter(category="CL").all()
+        food_and_beverages = Product.objects.filter(category="FB").all()
+        sound_and_vision = Product.objects.filter(category="S").all()
+
+        context = {
+        'product': product,
+        "electronics": electronics,
+        "phones": phones,
+        "tablets": tablets,
+        "accessories": accessories,
+        'home_kitchen': home_kitchen,
+        "camera": camera,
+        "computing": computing,
+        "food_and_beverages": food_and_beverages,
+        "clothing": clothing,
+        "sound_and_vision": sound_and_vision
+        }
+
+        return render(self.request, 'store/product-details.html', context)
+
+
 
 
 @login_required

@@ -244,7 +244,7 @@
 				<li><a href="{% url 'sound-view' %}"><i class="icon-chevron-right"></i>Sound & Vision ({{ sound_and_vision.count }})</a></li>
 				</ul>
 			</li>
-			<li class="subMenu"><a> CLOTHES [{{ Clothing.count }}] </a>
+			<li class="subMenu"><a> CLOTHES [{{ clothing.count }}] </a>
 			<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
@@ -312,7 +312,7 @@
 <!-- Sidebar end=============================================== -->
 		<div class="span9">		
 			<div class="well well-small">
-			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
+			<h4>Featured Products <small class="pull-right">{{ products_total.count }} featured products</small></h4>
 			<div class="row-fluid">
 			<div id="featured" class="carousel slide">
 			<div class="carousel-inner">
