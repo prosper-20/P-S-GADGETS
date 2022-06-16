@@ -59,6 +59,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
+            messages.info(request, f"Welcome back {username}!")
             return redirect("/")
         else:
             messages.info(request, "Invalid Credentials")

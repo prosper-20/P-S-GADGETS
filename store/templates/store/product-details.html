@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_template_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,13 +44,22 @@
 	{% endif %}
 	<div class="span6">
 	<div class="pull-right">
-		<a href="product_summary.html"><span class="">Fr</span></a>
-		<a href="product_summary.html"><span class="">Es</span></a>
+		<!-- <a href="product_summary.html"><span class="">Fr</span></a>
+		<a href="product_summary.html"><span class="">Es</span></a> -->
 		<span class="btn btn-mini">En</span>
-		<a href="product_summary.html"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.html"><span class="">$</span></a>
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<!-- <a href="product_summary.html"><span>&pound;</span></a> -->
+		
+		{% if request.user.is_authenticated %}
+		<span class="btn btn-mini"><span>&#8358;</span>155.00</span>
+		<a href="{% url 'order-summary' %}"><span class=""><span>&#8358;</span></span></a>
+		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Item(s) in your cart </span> </a>
+		<a href="{% url 'account_logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
+		{% else %} 
+		<span class="btn btn-mini"><span>&#8358;</span>0</span>
+		<a href="product_summary.html"><span class=""><span>&#8358;</span></span></a>
+		<a href="{% url 'login' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Login</span> </a>
+		<a href="{% url 'account_signup' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Sign Up</span> </a>
+		{% endif %}
 	</div>
 	</div>
 </div>
@@ -79,7 +89,7 @@
 	 <li class=""><a href="normal.html">Delivery</a></li>
 	 <li class=""><a href="contact.html">Contact</a></li>
 	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -117,15 +127,15 @@
 	<div id="sidebar" class="span3">
 		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-			<li class="subMenu open"><a> ELECTRONICS [230]</a>
+			<li class="subMenu open"><a> ELECTRONICS [{{ electronics.count }}]</a>
 				<ul>
-				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+				<li><a class="active" href="{% url 'camera-view' %}"><i class="icon-chevron-right"></i>Cameras ({{ camera.count }}) </a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+				<li><a href="{% url 'phone_view' %}"><i class="icon-chevron-right"></i>Mobile Phone [{{ phones.count }}]</a></li>
+				<li><a href="{% url 'sound-view' %}"><i class="icon-chevron-right"></i>Sound & Vision ({{ sound_and_vision.count }})</a></li>
 				</ul>
 			</li>
-			<li class="subMenu"><a> CLOTHES [840] </a>
+			<li class="subMenu"><a> CLOTHES [{{ Clothing.count }}]  </a>
 			<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
@@ -136,7 +146,7 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
 			</ul>
 			</li>
-			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+			<li class="subMenu"><a href="{% url 'home_and_kitchen' %}">FOOD AND BEVERAGES [1000]</a>
 				<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
@@ -148,9 +158,9 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
 			</ul>
 			</li>
-			<li><a href="products.html">HEALTH & BEAUTY [18]</a></li>
-			<li><a href="products.html">SPORTS & LEISURE [58]</a></li>
-			<li><a href="products.html">BOOKS & ENTERTAINMENTS [14]</a></li>
+			<li><a href="{% url 'home_and_kitchen' %}">HOME AND KITCHEN [{{ home_kitchen.count }}]</a></li>
+			<li><a href="{% url 'accessories_view' %}">ACCESSORIES [{{ accessories.count }}]</a></li>
+			<li><a href="{% url 'computing-view' %}">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
 		<br/>
 		  <div class="thumbnail">
@@ -198,7 +208,7 @@
     </ul>	
 	<div class="row">	  
 			<div id="gallery" class="span3">
-            <a href="{{ product.image.url }}" title="Fujifilm FinePix S2950 Digital Camera">
+            <a href="{{ product.image.url }}" title="{{ product.slug }}">
 				<img src="{{ product.image.url }}" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
             </a>
 			<div id="differentview" class="moreOptopm carousel slide">
