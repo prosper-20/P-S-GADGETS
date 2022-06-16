@@ -55,18 +55,34 @@ def search_products(request):
 
 
 
-class ProductCommentView(CreateView):
-    model = Comment
-    form_class = CommentForm
-    template_name = "store/post_comment_form.html"
-    success_url = "/"
+# class ProductCommentView(CreateView):
+#     model = Comment
+#     form_class = CommentForm
+#     template_name = "store/post_comment_form.html"
+#     success_url = "/"
 
-    def form_valid(self, slug, form):
-        form.instance.product_slug = self.kwargs['slug']
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.product_id = self.kwargs['slug']
+#         return super().form_valid(form)
 
     # def get_success_url(self):
     #     return reverse_lazy('product-detail', kwargs={'slug': self.kwargs['slug']})
+
+
+def ProductCommentView2(request):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            name = form.cleaned_data.get("name")
+            messages.success(request, f"Comment has been saved")
+            return redirect('/')
+    else:
+        form = CommentForm()
+    context = {
+        "form": form
+    }
+    return render(request, 'store/post_comment_form.html', form)
 
 class Home(ListView):
     model = Product

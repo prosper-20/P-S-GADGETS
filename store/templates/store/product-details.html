@@ -326,9 +326,9 @@
 				<div class="pt-5 mt-5">
 					<h3 class="mb-5">{{ product.comments.count }} Comments</h3>
 
-					{% if not post.comments.all %}
-						<!-- <p>No comment yet <a href="{% url 'post_comments' post.pk %}">Add one</a></p> -->
-						<p>No comment yet <a href="{% url 'product-comment' post.slug %}"><i class="fas fa-comment" style="color: cadetblue;">Add one</i></a></p>
+					{% if not product.comments.all %}
+						<!-- <p>No comment yet <a href="{% url 'product-comment' product.slug %}">Add one</a></p> -->
+						<p>No comment yet <a href="{% url 'product-comment' product.slug %}"><i class="fas fa-comment" style="color: cadetblue;">Add one</i></a></p>
 						{% else %}
 						<ul class="comment-list">
 						{% for comment in product.comments.all %}
