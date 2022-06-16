@@ -140,6 +140,12 @@ class Order(models.Model):
             total -= self.coupon.amount
         return total
 
+    def get_total_discount_price(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_amount_saved()
+        return total
+
 
 
 
