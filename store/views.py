@@ -61,7 +61,7 @@ class ProductCommentView(CreateView):
     template_name = "store/post_comment_form.html"
     success_url = "/"
 
-    def form_valid(self, form):
+    def form_valid(self, slug, form):
         form.instance.product_slug = self.kwargs['slug']
         return super().form_valid(form)
 
