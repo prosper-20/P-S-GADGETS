@@ -268,7 +268,8 @@ class CheckoutView(View):
                     return redirect('checkout')
         except ObjectDoesNotExist:
             messages.error(self.request, 'You do not have an active order')
-            return redirect('order-summary')
+            # We changed this from order-summary to tester
+            return redirect('tester')
 
     
 class PaymentView(View):
@@ -411,7 +412,8 @@ class OrderSummaryView(LoginRequiredMixin, View):
             context = {
                 'object': order
             }
-            return render(self.request, "store/order-summary.html", context)
+            # You changed this from store/order-summary.html to order_summary_2.html
+            return render(self.request, "store/order_summary_2.html", context)
         except ObjectDoesNotExist:
             messages.error(self.request, 'You do not have an active order')
             return redirect('/')
@@ -454,11 +456,13 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity has been updated")
-            return redirect("order-summary")
+            # Changed from order-summary to tester
+            return redirect("tester")
         else:
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
-            return redirect("order-summary")
+            # Changed from order-summary to tester
+            return redirect("tester")
 
     else:
         ordered_date = timezone.now()
@@ -466,7 +470,8 @@ def add_to_cart(request, slug):
                                      ordered_date=ordered_date)
         order.items.add(order_item)
         messages.info(request, "This item was added to your cart.")
-        return redirect("order-summary")
+        # Changed from order-summary to tester
+        return redirect("tester")
 
 
 @login_required
@@ -484,7 +489,8 @@ def remove_from_cart(request, slug):
             )[0]
             order.items.remove(order_item)
             messages.info(request, "This item was removed from your cart!")
-            return redirect('order-summary')
+            # Changed from order-summary to tester
+            return redirect("tester")
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)
@@ -513,7 +519,8 @@ def remove_single_item_from_cart(request, slug):
             else:
                 order.items.remove(order_item)
             messages.info(request, "This item quantity was updated")
-            return redirect('order-summary')
+            # Changed from order-summary to tester
+            return redirect("tester")
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)
