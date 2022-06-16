@@ -328,7 +328,7 @@
                   <td> <strong><span>&#8358;</span>{{ object.get_total}}</strong></td>
                   {% endif %}
                 </tr>
-				 <tr>
+				 <!-- <tr>
                   <td colspan="6" style="text-align:right">Total Discount:	</td>
 
                   {% if order_item.item.discount_price %}
@@ -336,7 +336,7 @@
                   {% else %}
                   <td> <strong><span>&#8358;</span>0.00</td>
                   {% endif %}
-                </tr>
+                </tr> -->
                  <tr>
                   <td colspan="6" style="text-align:right">Total Tax:	</td>
                   <td> <strong><span>&#8358;</span>0.00</td>
@@ -363,8 +363,22 @@
 				<div class="control-group">
 				<label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
 				<div class="controls">
-				<input type="text" class="input-medium" placeholder="CODE">
-				<button type="submit" class="btn"> ADD </button>
+					<!-- Promo code -->
+					{% if DISPLAY_COUPON_FORM %}
+					<form class="card p-2" action="{% url 'add-coupon' %}" method="post">
+						{% csrf_token %}
+						<div class="input-group">
+						<!-- <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+						{{ couponform.code }}
+						<div class="input-group-append">
+							<button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
+						</div>
+						</div>
+					</form>
+					{% endif %}
+					<!-- Promo code -->
+				<!-- <input type="text" class="input-medium" placeholder="CODE">
+				<button type="submit" class="btn"> ADD </button> -->
 				</div>
 				</div>
 				</form>
