@@ -52,4 +52,11 @@ admin.site.register(Refund)
 admin.site.register(Address, AddressAdmin)
 
 admin.site.register(UserProfile)
-admin.site.register(Comment)
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'body', 'product', 'date_added')
+    list_filter = ('name', 'date_posted')
+    search_fields = ('name', 'body')
+    
