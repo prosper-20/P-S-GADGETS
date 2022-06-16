@@ -28,7 +28,8 @@ class tester(View):
             order = Order.objects.get(user=self.request.user, ordered=False)
             context = {
                 'object': order,
-                'DISPLAY_COUPON_FORM': True
+                'DISPLAY_COUPON_FORM': True,
+                'couponform': CouponForm(),
             }
             return render(self.request, "store/order_summary_2.html", context)
         except ObjectDoesNotExist:
