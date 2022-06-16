@@ -332,7 +332,7 @@
                   <td colspan="6" style="text-align:right">Total Discount:	</td>
 
                   {% if order_item.item.discount_price %}
-                  <td> <strong><span>&#8358;</span>{{ order_item.get_amount_saved }}</td>
+                  <td> <strong><span>&#8358;</span>{{ object.get_total_discount_price }}</td>
                   {% else %}
                   <td> <strong><span>&#8358;</span>0.00</td>
                   {% endif %}
