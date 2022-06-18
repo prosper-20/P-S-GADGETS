@@ -720,7 +720,7 @@ def discount_view(request):
         "camera" : Product.objects.filter(category="CA").all(),
         "computing" : Product.objects.filter(category="C").all(),
         "clothing" : Product.objects.filter(category="CL").all(),
-        "food_and_beverages" : Product.objects.filter(category="FB").all()
+        "food_and_beverages" : Product.objects.filter(category="FB").all(),
         "sound_and_vision" : Product.objects.filter(category="S").all()
     }
 
