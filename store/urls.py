@@ -31,5 +31,5 @@ urlpatterns = [
     path("product/discount/", discount_view, name="discount-view"),
 
     path("tester/", tester.as_view(), name="tester"),
-    path("contact/", contact, name="contact")
+    path("contact-us/", contact, name="contact")
 ]
