@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from store.models import Comment
+from store.models import Comment, Contact
 
 PAYMENT_CHOICES = (
     ('S', 'Stripe'),
@@ -73,6 +73,13 @@ class CommentForm(forms.ModelForm):
         model = Comment 
 
         fields = ["name", "body"]
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+
+        fields = ["name", "email", "subject", "message"]
 
 
 

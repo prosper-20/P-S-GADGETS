@@ -1,6 +1,6 @@
 from re import U
 from django.contrib import admin
-from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address, UserProfile, Comment
+from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address, UserProfile, Comment, Contact
 
 # Register your models here.
 
@@ -59,4 +59,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'product', 'date_added')
     list_filter = ('name', 'date_added')
     search_fields = ('name', 'body')
+
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ["name", "email", "subject", "message"]
+
+
+admin.site.register(ContactAdmin)
     
