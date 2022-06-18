@@ -25,27 +25,40 @@
 <!-- Google-code-prettify -->	
 	<link href="{% static 'store/themes/js/google-code-prettify/prettify.css' %}" rel="stylesheet"/>
 <!-- fav and touch icons -->
-    <link rel="shortcut icon" href="themes/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="themes/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="{% static 'store/themes/images/ico/favicon.ico' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'store/themes/images/ico/apple-touch-icon-144-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'store/themes/images/ico/apple-touch-icon-114-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'store/themes/images/ico/apple-touch-icon-72-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'store/themes/images/ico/apple-touch-icon-57-precomposed.png' %}">
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
+	{% if request.user.is_authenticated %}
+	<div class="span6">Welcome, <strong> {{ user.username|capfirst }}</strong></div>
+	{% else %}
 	<div class="span6">Welcome!<strong> User</strong></div>
+	{% endif %}
 	<div class="span6">
 	<div class="pull-right">
-		<a href="product_summary.html"><span class="">Fr</span></a>
-		<a href="product_summary.html"><span class="">Es</span></a>
+		<!-- <a href="product_summary.html"><span class="">Fr</span></a>
+		<a href="product_summary.html"><span class="">Es</span></a> -->
 		<span class="btn btn-mini">En</span>
-		<a href="product_summary.html"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.html"><span class="">$</span></a>
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<!-- <a href="product_summary.html"><span>&pound;</span></a> -->
+		
+		{% if request.user.is_authenticated %}
+		<span class="btn btn-mini"><span>&#8358;</span>155.00</span>
+		<a href="{% url 'order-summary' %}"><span class=""><span>&#8358;</span></span></a>
+		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Item(s) in your cart </span> </a>
+		<a href="{% url 'account_logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
+		{% else %} 
+		<span class="btn btn-mini"><span>&#8358;</span>0</span>
+		<a href="product_summary.html"><span class=""><span>&#8358;</span></span></a>
+		<a href="{% url 'login' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Login</span> </a>
+		<a href="{% url 'account_signup' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Sign Up</span> </a>
+		{% endif %}
 	</div>
 	</div>
 </div>
