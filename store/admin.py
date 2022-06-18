@@ -57,6 +57,6 @@ admin.site.register(UserProfile)
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'product', 'date_added')
-    list_filter = ('name', 'date_posted')
+    list_filter = ('name', 'date_added')
     search_fields = ('name', 'body')
     
