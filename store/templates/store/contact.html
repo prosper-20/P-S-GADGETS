@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+{% load_cart_template_tags%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -147,7 +149,7 @@
 		</div>
 		<div class="span4">
 		<h4>Email Us</h4>
-		<form class="form-horizontal">
+		<!-- <form class="form-horizontal">
         <fieldset>
           <div class="control-group">
            
@@ -172,6 +174,10 @@
             <button class="btn btn-large" type="submit">Send Messages</button>
 
         </fieldset>
+      </form> -->
+      <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
       </form>
 		</div>
 	</div>

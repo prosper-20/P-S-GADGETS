@@ -770,11 +770,11 @@ def contact(request):
             email = form.cleaned_data.get("email")
             messages.success(request, f"Hi {username}, your message has been received. Please check your mail for a reply")
             return redirect("contact")
-        else:
-            form = ContactForm()
+    else:
+        form = ContactForm()
         context = {
             "form": form
         }
-        return render(request, 'store/contact.html', context)
+    return render(request, 'store/contact.html', context)
 
 

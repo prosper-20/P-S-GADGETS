@@ -65,5 +65,5 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ["name", "email", "subject", "message"]
 
 
-admin.site.register(ContactAdmin)
+admin.site.register(Contact, ContactAdmin)
     
