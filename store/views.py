@@ -15,7 +15,7 @@ import stripe
 import random
 import string
 from store.models import Comment
-from .forms import CommentForm
+from .forms import CommentForm, ContactForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -758,5 +758,23 @@ def home_and_kitchen(request):
         "home_kitchen": home_kitchen
     }
     return render(request, 'store/home_and_kitchen.html', context)
+
+
+
+def contact(request):
+    if request.method  == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            email = form.cleaned_data.get("email")
+            messages.success(request, f"Hi {username}, your message has been received. Please check your mail for a reply")
+            return redirect("contact")
+        else:
+            form = ContactForm()
+        context = {
+            "form": form
+        }
+        return render(request, 'store/contact.html', context)
 
 
