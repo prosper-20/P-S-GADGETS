@@ -623,7 +623,8 @@ class AddCouponView(View):
                 order.coupon = get_coupon(self.request, code=code)
                 order.save()
                 messages.success(self.request, "Successfully added coupon")
-                return redirect("home")
+                # You changed it from home to checkout
+                return redirect("checkout")
 
             except ObjectDoesNotExist:
                 messages.info(self.request, 'You do not have an active order')
