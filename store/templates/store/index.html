@@ -113,7 +113,7 @@
     <ul id="topMenu" class="nav pull-right">
 	 <li class=""><a href="{% url 'discount-view' %}">Specials Offer</a></li>
 	 <li class=""><a href="normal.html">Delivery</a></li>
-	 <li class=""><a href="contact.html">Contact</a></li>
+	 <li class=""><a href="{% url 'contact' %}">Contact</a></li>
 	 <li class="">
 	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
@@ -699,7 +699,7 @@
 			 </div>
 			<div class="span3">
 				<h5>INFORMATION</h5>
-				<a href="contact.html">CONTACT</a>  
+				<a href="{% url 'contact' %}">CONTACT</a>  
 				<a href="register.html">REGISTRATION</a>  
 				<a href="legal_notice.html">LEGAL NOTICE</a>  
 				<a href="tac.html">TERMS AND CONDITIONS</a> 

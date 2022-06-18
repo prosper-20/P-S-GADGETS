@@ -772,9 +772,9 @@ def contact(request):
             return redirect("contact")
     else:
         form = ContactForm()
-        context = {
-            "form": form
-        }
+    context = {
+        "form": form
+    }
     return render(request, 'store/contact.html', context)
 
 
