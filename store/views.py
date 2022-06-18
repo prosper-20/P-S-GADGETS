@@ -710,7 +710,18 @@ def discount_view(request):
         if product.discount_price:
             lis.append(product)
     context = {
-        "lis": lis
+        "lis": lis,
+        # You just added these for the side bar context
+        "electronics" : Product.objects.filter(category="E").all(),
+        "phones": Product.objects.filter(category="P").all(),
+        "tablets" : Product.objects.filter(category="T").all(),
+        "accessories" : Product.objects.filter(category="A").all(),
+        "home_kitchen" : Product.objects.filter(category="H").all(),
+        "camera" : Product.objects.filter(category="CA").all(),
+        "computing" : Product.objects.filter(category="C").all(),
+        "clothing" : Product.objects.filter(category="CL").all(),
+        "food_and_beverages" : Product.objects.filter(category="FB").all()
+        "sound_and_vision" : Product.objects.filter(category="S").all()
     }
 
     return render(request, 'store/discount.html', context)
