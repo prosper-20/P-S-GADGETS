@@ -104,11 +104,13 @@ class HomeView(View):
         food_and_beverages = Product.objects.filter(category="FB").all()
         sound_and_vision = Product.objects.filter(category="S").all()
         latests = Product.objects.filter(type="L")
+        sidebar = Product.objects.filter(type="S")
         products_total = Product.objects.all()
         context = {
             'products': products,
             'latests': latests,
             "products2": products2,
+            "sidebar": sidebar,
             "electronics": electronics,
             "phones": phones,
             "tablets": tablets,
@@ -470,6 +472,7 @@ class Detail(DetailView):
         clothing = Product.objects.filter(category="CL").all()
         food_and_beverages = Product.objects.filter(category="FB").all()
         sound_and_vision = Product.objects.filter(category="S").all()
+        sidebar = Product.objects.filter(type="S")
 
         context = {
         'product': product,
@@ -482,7 +485,8 @@ class Detail(DetailView):
         "computing": computing,
         "food_and_beverages": food_and_beverages,
         "clothing": clothing,
-        "sound_and_vision": sound_and_vision
+        "sound_and_vision": sound_and_vision,
+        "sidebar": sidebar,
         }
 
         return render(self.request, 'store/product-details.html', context)

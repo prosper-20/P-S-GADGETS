@@ -272,22 +272,24 @@
 			<li><a href="{% url 'computing-view' %}">COMPUTING [{{ computing.count }}]</a></li>
 		</ul>
 		<br/>
+		  {% for product in sidebar %}
 		  <div class="thumbnail">
-			<img src="{% static 'store/themes/images/products/panasonic.jpg' %}" alt="Bootshop panasonoc New camera"/>
+			<a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="{{ proudct.title }}"/></a>
 			<div class="caption">
-			  <h5>Panasonic</h5>
-				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>222.00</a></h4>
+			  <h5>{{ product.title }}</h5>
+				<h4 style="text-align:center"><a class="btn" href="{{ product.get_absolute_url }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>{{ prduct.price }}</a></h4>
 			</div>
 		  </div><br/>
-			<div class="thumbnail">
+		  {% endfor %}
+			<!-- <div class="thumbnail">
 				<img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/65/7666011/1.jpg?9336" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
 				  <h5>Samsung Galaxy A23</h5>
 				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>150000.0</a></h4>
 				</div>
-			  </div><br/>
-			  <!-- YOU JUST REEATED THSIIS TO COVER FOR THE DEAL OF THE DAY -->
-			  <div class="thumbnail">
+			  </div><br/> -->
+			  <!-- YOU JUST REEATED THIS TO COVER FOR THE DEAL OF THE DAY -->
+			  <!-- <div class="thumbnail">
 				<img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/67/078027/1.jpg?3335" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
 				  <h5>Qasa 18 Inches Electric Standing Fan </h5>
@@ -300,7 +302,7 @@
 				  <h5>Lutian 3.5KVA Key Start Generator 100% Copper -</h5>
 				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>160000.0</a></h4>
 				</div>
-			  </div><br/>
+			  </div><br/> -->
 			  
 			  <div class="thumbnail">
 				<img src="{% static 'store/themes/images/payment_methods.png' %}" title="Bootshop Payment Methods" alt="Payments Methods">

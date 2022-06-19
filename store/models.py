@@ -34,7 +34,8 @@ ADDRESS_CHOICES = (
 
 TYPE_CHOICES = (
     ('F','Featured'),
-    ('L', 'Latest')
+    ('L', 'Latest'),
+    ('S', 'Sidebar')
 )
 
 
