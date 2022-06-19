@@ -50,11 +50,7 @@
 		<!-- <a href="product_summary.html"><span>&pound;</span></a> -->
 		
 		{% if request.user.is_authenticated %}
-		{% if object.get_total %}
-		<span class="btn btn-mini"><span>&#8358;</span>{{ object.get_total}}</span>
-		{% else %}
-		<span class="btn btn-mini"><span>&#8358;</span>****</span>
-		{% endif %}
+		<span class="btn btn-mini"><span>&#8358;</span>****.**</span>
 		<a href="{% url 'order-summary' %}"><span class=""><span>&#8358;</span></span></a>
 		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Item(s) in your cart </span> </a>
 		<a href="{% url 'account_logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
