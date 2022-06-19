@@ -91,38 +91,44 @@ class Home(ListView):
     
 class HomeView(View):
     def get(self, *args, **kwargs):
-        products = Product.objects.filter(type="F")[:4]
-        products2 = Product.objects.filter(type="F")[3:7]
-        electronics = Product.objects.filter(category="E").all()
-        phones = Product.objects.filter(category="P").all()
-        tablets = Product.objects.filter(category="T").all()
-        accessories = Product.objects.filter(category="A").all()
-        home_kitchen = Product.objects.filter(category="H").all()
-        camera = Product.objects.filter(category="CA").all()
-        computing = Product.objects.filter(category="C").all()
-        clothing = Product.objects.filter(category="CL").all()
-        food_and_beverages = Product.objects.filter(category="FB").all()
-        sound_and_vision = Product.objects.filter(category="S").all()
-        latests = Product.objects.filter(type="L")
-        sidebar = Product.objects.filter(type="S")
-        products_total = Product.objects.all()
-        context = {
-            'products': products,
-            'latests': latests,
-            "products2": products2,
-            "sidebar": sidebar,
-            "electronics": electronics,
-            "phones": phones,
-            "tablets": tablets,
-            "accessories": accessories,
-            'home_kitchen': home_kitchen,
-            "camera": camera,
-            "computing": computing,
-            "food_and_beverages": food_and_beverages,
-            "clothing": clothing,
-            "sound_and_vision": sound_and_vision,
-            "products_total": products_total
-            }
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            products = Product.objects.filter(type="F")[:4]
+            products2 = Product.objects.filter(type="F")[3:7]
+            electronics = Product.objects.filter(category="E").all()
+            phones = Product.objects.filter(category="P").all()
+            tablets = Product.objects.filter(category="T").all()
+            accessories = Product.objects.filter(category="A").all()
+            home_kitchen = Product.objects.filter(category="H").all()
+            camera = Product.objects.filter(category="CA").all()
+            computing = Product.objects.filter(category="C").all()
+            clothing = Product.objects.filter(category="CL").all()
+            food_and_beverages = Product.objects.filter(category="FB").all()
+            sound_and_vision = Product.objects.filter(category="S").all()
+            latests = Product.objects.filter(type="L")
+            sidebar = Product.objects.filter(type="S")
+            products_total = Product.objects.all()
+            context = {
+                'products': products,
+                'latests': latests,
+                "products2": products2,
+                "sidebar": sidebar,
+                "electronics": electronics,
+                "phones": phones,
+                "tablets": tablets,
+                "accessories": accessories,
+                'home_kitchen': home_kitchen,
+                "camera": camera,
+                "computing": computing,
+                "food_and_beverages": food_and_beverages,
+                "clothing": clothing,
+                "sound_and_vision": sound_and_vision,
+                "products_total": products_total
+                }
+        except ObjectDoesNotExist:
+            messages.error(self.request, 'You do not have an active order')
+            return redirect('/')
+
 
         return render(self.request, 'store/index.html', context)
 
