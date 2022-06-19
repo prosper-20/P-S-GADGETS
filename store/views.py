@@ -123,6 +123,7 @@ class HomeView(View):
             "sound_and_vision": sound_and_vision,
             "products_total": products_total
             }
+    
 
 
         return render(self.request, 'store/index.html', context)
@@ -462,35 +463,39 @@ class Detail(DetailView):
     # template_name = "store/product-details.html"
     # context_object_name = "product"
     def get(self, request, slug, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        product = Product.objects.get(slug=slug)
-        electronics = Product.objects.filter(category="E").all()
-        phones = Product.objects.filter(category="P").all()
-        tablets = Product.objects.filter(category="T").all()
-        accessories = Product.objects.filter(category="A").all()
-        home_kitchen = Product.objects.filter(category="H").all()
-        camera = Product.objects.filter(category="CA").all()
-        computing = Product.objects.filter(category="C").all()
-        clothing = Product.objects.filter(category="CL").all()
-        food_and_beverages = Product.objects.filter(category="FB").all()
-        sound_and_vision = Product.objects.filter(category="S").all()
-        sidebar = Product.objects.filter(type="S")
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            product = Product.objects.get(slug=slug)
+            electronics = Product.objects.filter(category="E").all()
+            phones = Product.objects.filter(category="P").all()
+            tablets = Product.objects.filter(category="T").all()
+            accessories = Product.objects.filter(category="A").all()
+            home_kitchen = Product.objects.filter(category="H").all()
+            camera = Product.objects.filter(category="CA").all()
+            computing = Product.objects.filter(category="C").all()
+            clothing = Product.objects.filter(category="CL").all()
+            food_and_beverages = Product.objects.filter(category="FB").all()
+            sound_and_vision = Product.objects.filter(category="S").all()
+            sidebar = Product.objects.filter(type="S")
 
-        context = {
-        'product': product,
-        "electronics": electronics,
-        "phones": phones,
-        "tablets": tablets,
-        "accessories": accessories,
-        'home_kitchen': home_kitchen,
-        "camera": camera,
-        "computing": computing,
-        "food_and_beverages": food_and_beverages,
-        "clothing": clothing,
-        "sound_and_vision": sound_and_vision,
-        "sidebar": sidebar,
-        "order": order,
-        }
+            context = {
+            'product': product,
+            "electronics": electronics,
+            "phones": phones,
+            "tablets": tablets,
+            "accessories": accessories,
+            'home_kitchen': home_kitchen,
+            "camera": camera,
+            "computing": computing,
+            "food_and_beverages": food_and_beverages,
+            "clothing": clothing,
+            "sound_and_vision": sound_and_vision,
+            "sidebar": sidebar,
+            "order": order,
+            }
+        except ObjectDoesNotExist:
+            # messages.error(self.request, 'You do not have an active order')
+            return render(request, 'store/product-details2.html', context)
 
         return render(self.request, 'store/product-details.html', context)
 
