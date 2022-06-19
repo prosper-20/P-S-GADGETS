@@ -179,15 +179,7 @@
 		</ul>
 		<br/>
 
-		{% for product in sidebar %}
-		<div class="thumbnail">
-		  <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="{{ proudct.title }}"/></a>
-		  <div class="caption">
-			<h5>{{ product.title }}</h5>
-			  <h4 style="text-align:center"><a class="btn" href="{{ product.get_absolute_url }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><span>&#8358;</span>{{ prduct.price }}</a></h4>
-		  </div>
-		</div><br/>
-		{% endfor %}
+		
 			<!-- <div class="thumbnail">
 				<img src="{% static 'store/themes/images/products/kindle.png' %}" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
