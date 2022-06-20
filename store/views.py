@@ -841,7 +841,7 @@ def search_questions(request):
     if request.method == "POST":
         searched = request.POST['searched']
         # This returns the results of the user's search
-        items = Product.objects.filter(slug__icontains=searched)
+        items = Question.objects.filter(slug__icontains=searched)
         # items_all = Item.objects.all()
         # rice_items = Item.objects.filter(title__icontains="rice")
         # You cahneged from new_search_posts.html to ....

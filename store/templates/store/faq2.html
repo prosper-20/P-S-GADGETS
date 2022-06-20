@@ -58,7 +58,7 @@
 </a>
   <div class="navbar-inner">
     <a class="brand" href="index.html"><img src="{% static 'store/themes/images/logo.png' %}" alt="Bootsshop"/></a>
-	<form class="form-inline navbar-search" method="post" action="{% url 'search_products' %}">
+	<form class="form-inline navbar-search" method="post" action="{% url 'search_questions' %}">
 		{% csrf_token %}
 		<input id="srchFld" name="searched" placeholder="Describe your issue" class="srchTxt" aria-label="Search" type="search" />
 		  <!-- <select class="srchTxt">
