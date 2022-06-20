@@ -36,16 +36,16 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+	<div class="span6">Welcome To<strong> P's Gadgets</strong></div>
 	<div class="span6">
 	<div class="pull-right">
 		<!-- <a href="product_summary.html"><span class="">Fr</span></a>
 		<a href="product_summary.html"><span class="">Es</span></a> -->
 		<span class="btn btn-mini">En</span>
 		<!-- <a href="product_summary.html"><span>&pound;</span></a> -->
-		<span class="btn btn-mini">$155.00</span>
+		<!-- <span class="btn btn-mini">$155.00</span> -->
 		<!-- <a href="product_summary.html"><span class="">$</span></a> -->
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<!-- <a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a>  -->
 	</div>
 	</div>
 </div>
@@ -58,16 +58,17 @@
 </a>
   <div class="navbar-inner">
     <a class="brand" href="index.html"><img src="{% static 'store/themes/images/logo.png' %}" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
+	<form class="form-inline navbar-search" method="post" action="{% url 'search_products' %}">
+		{% csrf_token %}
+		<input id="srchFld" name="searched" placeholder="Describe your issue" class="srchTxt" aria-label="Search" type="search" />
+		  <!-- <select class="srchTxt">
 			<option>All</option>
 			<option>CLOTHES </option>
 			<option>FOOD AND BEVERAGES </option>
 			<option>HEALTH & BEAUTY </option>
 			<option>SPORTS & LEISURE </option>
 			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
+		</select>  -->
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
@@ -114,7 +115,7 @@
     {% for question in questions %}
 	<div class="accordion-group">
 	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="{{ question.get_absolute_url }}">
+		<h4><a href="{{ question.get_absolute_url }}">
 			{{ question.question }}
 		</a></h4>
 	  </div>

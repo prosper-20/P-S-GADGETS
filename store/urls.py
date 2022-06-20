@@ -29,7 +29,8 @@ from .views import (
     contact, 
     faq, 
     question,
-    QuestionDetail
+    QuestionDetail,
+    search_questions
 
 )
 
@@ -37,6 +38,7 @@ urlpatterns = [
     # path("", views.Home.as_view(), name="home"),
     path('', HomeView.as_view(), name='home'),
     path('search/', views.search_products, name="search_products"),
+    path('faq/search, views.search_questions', name="search_questions")
     path("product/<slug:slug>/", views.Detail.as_view(), name="product-detail"),
     path("product/<slug:slug>/comment/", ProductCommentView.as_view(), name="product-comment"),
     path("checkout/", CheckoutView.as_view(), name="checkout"),
