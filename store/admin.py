@@ -1,6 +1,6 @@
 from re import U
 from django.contrib import admin
-from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address, UserProfile, Comment, Contact
+from .models import Product, Order, OrderItem, Payment, Coupon, Refund, Address, UserProfile, Comment, Contact, Question
 
 # Register your models here.
 
@@ -66,4 +66,11 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Contact, ContactAdmin)
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ["question", "slug"]
+
+
+admin.site.register(Question, QuestionAdmin)
     

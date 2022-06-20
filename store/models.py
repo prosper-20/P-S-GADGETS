@@ -228,6 +228,7 @@ class Contact(models.Model):
 class Question(models.Model):
     question = models.TextField()
     answers = models.TextField()
+    slug = models.SlugField()
 
     def __str_(self):
         return self.question

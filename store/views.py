@@ -3,7 +3,7 @@ import imp
 from itertools import product
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Order, OrderItem, Address, Payment, Coupon, Refund, Address, UserProfile
+from .models import Product, Order, OrderItem, Address, Payment, Coupon, Refund, Address, UserProfile, Question
 from django.views.generic import ListView, DetailView, View
 from django.utils import timezone
 from django.contrib import messages
@@ -817,5 +817,13 @@ def contact(request):
 
 def faq(request):
     return render(request, 'store/faq.html')
+
+
+def question(request):
+    questions = Question.objects.all()
+    context = {
+        "questions": questions
+    }
+    return render(request, 'store/faq2.html', context)
 
 
