@@ -50,8 +50,7 @@
 		<!-- <a href="product_summary.html"><span>&pound;</span></a> -->
 		
 		{% if request.user.is_authenticated %}
-		<span class="btn btn-mini"><span>&#8358;</span>155.00</span>
-		<a href="{% url 'order-summary' %}"><span class=""><span>&#8358;</span></span></a>
+		<span class="btn btn-mini"><span>&#8358;</span>****.**</span>
 		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Item(s) in your cart </span> </a>
 		<a href="{% url 'account_logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
 		{% else %} 
@@ -115,10 +114,10 @@
 	 <li class=""><a href="normal.html">Delivery</a></li>
 	 <li class=""><a href="{% url 'contact' %}">Contact</a></li>
 	 <li class="">
-		{% if request.user.is_not_authenticated %}
-	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+		{% if request.user.is_authenticated %}
+	 <a href="{% url 'logout' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-success btn-md">Logout</span></a>
 	 {% else %}
-	 <a href="{% url 'logout' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Logout</span></a>
+	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-primary">Login</span></a>
 	 {% endif %}
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
@@ -235,9 +234,9 @@
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
 		{% if request.user.is_authenticated %}
-		<div class="well well-small"><a id="myCart" href="{% url 'order-summary' %}"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{ request.user|cart_item_count }} Items in your cart <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="{% url 'order-summary' %}"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{ request.user|cart_item_count }} Items in your cart <span class="badge badge-warning pull-right"><span>&#8358;</span>****.**</span></a></div>
 		{% else %}
-		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">0 Items in your cart <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">0 Items in your cart <span class="badge badge-warning pull-right"><span>&#8358;</span>****.**</span></a></div>
 		{% endif %}
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> ELECTRONICS [{{ electronics.count }}]</a>
