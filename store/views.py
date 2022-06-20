@@ -815,3 +815,7 @@ def contact(request):
     return render(request, 'store/contact.html', context)
 
 
+def faq(request):
+    return render(request, 'store/faq.html')
+
+
