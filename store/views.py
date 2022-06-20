@@ -827,3 +827,13 @@ def question(request):
     return render(request, 'store/faq2.html', context)
 
 
+def QuestionDetail(request, slug):
+    question = Question.objects.get(slug=slug)
+    context = {
+        "question": question
+    }
+
+    return render(request, 'store/question_details.html', context)
+
+
+
