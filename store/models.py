@@ -230,7 +230,7 @@ class Question(models.Model):
     answers = models.TextField()
     slug = models.SlugField()
 
-    def __str_(self):
+    def __str__(self):
         return self.question
 
 
