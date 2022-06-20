@@ -833,7 +833,7 @@ def QuestionDetail(request, slug):
         "question": question
     }
 
-    return render(request, 'store/question_details.html', context)
+    return render(request, 'store/faq3.html', context) #You changed the template from store/question_details.html to faq3.html
 
 
 
