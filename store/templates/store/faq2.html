@@ -114,7 +114,7 @@
     {% for question in questions %}
 	<div class="accordion-group">
 	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="{{ question.get_absolute_url }}">
 			{{ question.question }}
 		</a></h4>
 	  </div>
