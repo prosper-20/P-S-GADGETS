@@ -3,7 +3,7 @@ from django.urls import path
 
 from store.models import Order
 from . import views
-from .views import add_to_cart, remove_from_cart, OrderSummaryView, remove_single_item_from_cart, CheckoutView, PaymentView, HomeView, AddCouponView, RequestRefundView, phone_view, accessories_view, computing_view, camera_view, tablets_view, discount_view, food_view, clothing_view, sound_view, search_products, tester, home_and_kitchen, ProductCommentView, contact, faq
+from .views import add_to_cart, remove_from_cart, OrderSummaryView, remove_single_item_from_cart, CheckoutView, PaymentView, HomeView, AddCouponView, RequestRefundView, phone_view, accessories_view, computing_view, camera_view, tablets_view, discount_view, food_view, clothing_view, sound_view, search_products, tester, home_and_kitchen, ProductCommentView, contact, faq, question
 
 urlpatterns = [
     # path("", views.Home.as_view(), name="home"),
@@ -32,5 +32,5 @@ urlpatterns = [
 
     path("tester/", tester.as_view(), name="tester"),
     path("contact-us/", contact, name="contact"),
-    path('faq/', faq, name="faq")
+    path('faq/', question, name="faq") #Changed the function view from faq to question
 ]
