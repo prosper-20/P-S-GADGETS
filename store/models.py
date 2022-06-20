@@ -225,3 +225,11 @@ class Contact(models.Model):
         return self.name
 
 
+class Question(models.Model):
+    question = models.TextField()
+    answers = models.TextField()
+
+    def __str_(self):
+        return self.question
+
+
