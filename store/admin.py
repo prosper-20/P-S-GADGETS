@@ -59,10 +59,15 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'product', 'date_added')
     list_filter = ('name', 'date_added')
     search_fields = ('name', 'body')
-    actions = ['approve_comments']
+    actions = ['approve_comments', 'disapprove_comments']
 
     def approve_comments(self, request, queryset):
         queryset.update(active=True)
+
+    def disapprove_comments(self, request, queryset):
+        queryset.update(active=False)
+
+    
 
 
 class ContactAdmin(admin.ModelAdmin):

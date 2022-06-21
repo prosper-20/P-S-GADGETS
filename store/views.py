@@ -860,7 +860,7 @@ def post_detail(request, slug):
         if comment_form.is_valid():
 
             # Create Comment object but don't save to database yet
-            new_comment = comment_form.save(commit=False)
+            new_comment = comment_form.save()
             # Assign the current post to the comment
             new_comment.product = product
             # Save the comment to the database
