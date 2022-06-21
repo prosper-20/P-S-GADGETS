@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CommentForm
 import stripe
 import random
 import string
@@ -505,7 +505,8 @@ class Detail(DetailView):
         clothing = Product.objects.filter(category="CL").all()
         food_and_beverages = Product.objects.filter(category="FB").all()
         sound_and_vision = Product.objects.filter(category="S").all()
-        sidebar = Product.objects.filter(type="S")
+        sidebar = Product.objects.filter(type="S"),
+        comment_form = CommentForm()
 
         context = {
         'product': product,
@@ -520,13 +521,14 @@ class Detail(DetailView):
         "clothing": clothing,
         "sound_and_vision": sound_and_vision,
         "sidebar": sidebar,
+        "comment_form": comment_form,
         }
 
         return render(self.request, 'store/product-details.html', context)
 
 
     def post(self, request, slug, *args, **kwargs):
-        template_name = 'post_detail.html'
+        template_name = 'store/comment_tester.html'
         product = get_object_or_404(Product, slug=slug)
         comments = product.comments.filter(active=True)
         new_comment = None
