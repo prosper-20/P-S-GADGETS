@@ -30,7 +30,9 @@ from .views import (
     faq, 
     question,
     QuestionDetail,
-    search_questions
+    search_questions,
+
+    post_detail,
 
 )
 
@@ -63,5 +65,6 @@ urlpatterns = [
     path("tester/", tester.as_view(), name="tester"),
     path("contact-us/", contact, name="contact"),
     path('faq/', question, name="faq"), #Changed the function view from faq to question
-    path('faq/<slug:slug>/', QuestionDetail, name="faq_detail")
+    path('faq/<slug:slug>/', QuestionDetail, name="faq_detail"),
+    path("product/<slug:slug>/tester/", post_detail, name="comment_tester")
 ]
