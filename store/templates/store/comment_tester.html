@@ -1,26 +1,19 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "store/comment_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
     <div class="container">
         <div class="row">
           <div class="col-md-8 card mb-4  mt-3 left  top">
-            <div class="card-body">
+            <!-- <div class="card-body">
               <h1>{% block title %}Comment Tester {% endblock title %}</h1>
               <p class=" text-muted">{{ product.author }} | {{ product.created_on }}</p>
               <p class="card-text ">{{ product.description | safe }}</p>
-            </div>
+            </div> -->
           </div>
       
-          <div class="col-md-8 card mb-4  mt-3 ">
+          <!-- <div class="col-md-8 card mb-4  mt-3 ">
             <div class="card-body">
-              <!-- comments -->
+               comments 
               <h2>{{ comments.count }} comments</h2>
       
               {% for comment in comments %}
@@ -34,8 +27,8 @@
                 {{ comment.body | linebreaks }}
               </div>
               {% endfor %}
-            </div>
-          </div>
+            </div> 
+          </div>-->
           <div class="col-md-8 card mb-4  mt-3 ">
             <div class="card-body">
               {% if new_comment %}
@@ -54,6 +47,5 @@
           </div>
         </div>
       </div>
-</body>
-</html>
+{% endblock content %}
 

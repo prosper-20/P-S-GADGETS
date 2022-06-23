@@ -543,6 +543,7 @@ class Detail(DetailView):
                 new_comment.product = product
                 # Save the comment to the database
                 new_comment.save()
+                return redirect("product-details", args=[str(self.slug)])
         else:
             comment_form = CommentForm()
 
