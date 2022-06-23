@@ -56,7 +56,7 @@
 		{% else %} 
 		<span class="btn btn-mini"><span>&#8358;</span>0</span>
 		<a href="{% url 'login' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Login</span> </a>
-		<a href="{% url 'account_signup' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Sign Up</span> </a>
+		<a href="{% url 'register2' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Sign Up</span> </a>
 		{% endif %}
 	</div>
 	</div>
@@ -114,7 +114,7 @@
 	 <li class=""><a href="{% url 'contact' %}">Contact</a></li>
 	 <li class="">
 		{% if request.user.is_authenticated %}
-	 <a href="{% url 'logout' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-success btn-md">Logout</span></a>
+	 <a href="{% url 'logout' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-primary btn-md">Logout</span></a>
 	 {% else %}
 	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-primary">Login</span></a>
 	 {% endif %}
