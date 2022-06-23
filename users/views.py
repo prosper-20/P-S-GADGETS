@@ -50,7 +50,7 @@ def register2(request):
                 user.save()
                 # For sending mails
                 mydict = {'username': username}
-                html_template = 'register_email.html'
+                html_template = 'users/welcome_email.html'
                 html_message = render_to_string(html_template, context=mydict)
                 subject = 'Welcome to Service-Verse'
                 email_from = settings.EMAIL_HOST_USER
