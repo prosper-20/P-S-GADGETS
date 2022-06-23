@@ -42,7 +42,7 @@ TYPE_CHOICES = (
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
-    one_click_purchasing = models.BooleanField()
+    one_click_purchasing = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
@@ -195,12 +195,12 @@ class Refund(models.Model):
         return f"{self.pk}"
 
 
-def userprofile_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-        userprofile = UserProfile.objects.create(user=instance)
+# def userprofile_receiver(sender, instance, created, *args, **kwargs):
+#     if created:
+#         userprofile = UserProfile.objects.create(user=instance)
 
 
-post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
+# post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
 
 
 
