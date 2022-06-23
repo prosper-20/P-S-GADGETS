@@ -3,6 +3,11 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.conf import settings
+from django.core.mail import EmailMessage, send_mail
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage, send_mail
+from sendgrid.helpers.mail import SandBoxMode, MailSettings
 
 # Create your views here.
 
@@ -43,6 +48,17 @@ def register2(request):
                         password=password
                     )
                 user.save()
+                # For sending mails
+                mydict = {'username': username}
+                html_template = 'register_email.html'
+                html_message = render_to_string(html_template, context=mydict)
+                subject = 'Welcome to Service-Verse'
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [email]
+                message = EmailMessage(subject, html_message,
+                                   email_from, recipient_list)
+                message.content_subtype = 'html'
+                message.send()
                 messages.success(request, f"Hi {username}, your account has been created succesfully!")
                 return redirect('/')
         else:
