@@ -577,7 +577,7 @@ def add_to_cart(request, slug):
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
             # Changed from order-summary to tester
-            return redirect("order-summary")
+            return redirect("tester")
 
     else:
         ordered_date = timezone.now()
@@ -586,7 +586,7 @@ def add_to_cart(request, slug):
         order.items.add(order_item)
         messages.info(request, "This item was added to your cart.")
         # Changed from order-summary to tester
-        return redirect("order-summary")
+        return redirect("tester")
 
 
 @login_required
@@ -605,7 +605,7 @@ def remove_from_cart(request, slug):
             order.items.remove(order_item)
             messages.info(request, "This item was removed from your cart!")
             # Changed from order-summary to tester
-            return redirect("order-summary")
+            return redirect("tester")
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)
@@ -635,7 +635,7 @@ def remove_single_item_from_cart(request, slug):
                 order.items.remove(order_item)
             messages.info(request, "This item quantity was updated")
             # Changed from order-summary to tester
-            return redirect("order-summary")
+            return redirect("tester")
         else:
             messages.info(request, "This item was not in your cart.")
             return redirect("product-detail", slug=slug)

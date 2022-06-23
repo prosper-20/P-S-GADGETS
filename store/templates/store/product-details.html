@@ -141,7 +141,7 @@
 	<div class="row">
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{ request.user|cart_item_count }} Item(s) in your cart  <span class="badge badge-warning pull-right"><span>&#8358;</span>****.**</span></a></div>
+		<div class="well well-small"><a id="myCart" href="{% url 'order-sumary' %}"><img src="{% static 'store/themes/images/ico-cart.png' %}" alt="cart">{{ request.user|cart_item_count }} Item(s) in your cart  <span class="badge badge-warning pull-right"><span>&#8358;</span>****.**</span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> ELECTRONICS [{{ electronics.count }}]</a>
 				<ul>
