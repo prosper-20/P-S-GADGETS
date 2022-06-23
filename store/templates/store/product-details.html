@@ -1,5 +1,6 @@
 {% load static %}
 {% load cart_template_tags %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -101,9 +102,9 @@
 	 <li class=""><a href="contact.html">Contact</a></li>
 	 <li class="">
 		{% if request.user.is_authenticated %}
-	 	<a href="{% url 'logout' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Logout</span></a>
+	 	<a href="{% url 'logout' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-primary">Logout</span></a>
 		{% else %}
-		<a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+		<a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-primary">Login</span></a>
 		{% endif %}
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
