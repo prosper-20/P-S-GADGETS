@@ -371,13 +371,13 @@
 				<form class="form-horizontal">
 				<div class="control-group">
 				<strong ><h4>PROMO CODE: PLEASE ADD YOUR PROMO CODE( IF YOU HAVE ONE) IN THE CHECKOUT PAGE</h4></strong>
-				<div class="controls">
-					<!-- Promo code -->
+				<!-- <div class="controls">
+					 Promo code 
 					{% if DISPLAY_COUPON_FORM %}
 					<form class="card p-2" action="{% url 'add-coupon' %}" method="post">
 						{% csrf_token %}
 						<div class="input-group">
-						<!-- <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+						<input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
 						{{ couponform.code }}
 						<div class="input-group-append">
 							<button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
@@ -385,10 +385,10 @@
 						</div>
 					</form>
 					{% endif %}
-					<!-- Promo code -->
-				<!-- <input type="text" class="input-medium" placeholder="CODE">
-				<button type="submit" class="btn"> ADD </button> -->
-				</div>
+					 Promo code 
+				<input type="text" class="input-medium" placeholder="CODE">
+				<button type="submit" class="btn"> ADD </button>
+				</div>-->
 				</div>
 				</form>
 				</td>

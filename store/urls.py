@@ -62,7 +62,7 @@ urlpatterns = [
     path("category/food-beverages/", food_view, name="food-view"),
     path("product/discount/", discount_view, name="discount-view"),
 
-    path("tester/", tester.as_view(), name="tester"),
+    path("Order-Summary/", tester.as_view(), name="tester"),
     path("contact-us/", contact, name="contact"),
     path('faq/', question, name="faq"), #Changed the function view from faq to question
     path('faq/<slug:slug>/', QuestionDetail, name="faq_detail"),
