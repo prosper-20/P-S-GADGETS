@@ -51,6 +51,7 @@ def register2(request):
                 user.save()
                 # For sending mails
                 products = Product.objects.filter(type="F")[:4]
+                electronics = Product.objects.filter(category="E").all()
                 mydict = {'username': username, 'products':products}
                 html_template = 'users/welcome_email_3.html' #Changed it from users/welcome_email.html to welcome_email_3.html
                 html_message = render_to_string(html_template, context=mydict)
