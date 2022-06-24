@@ -51,8 +51,8 @@ def register2(request):
                 user.save()
                 # For sending mails
                 products = Product.objects.filter(type="F")[:4]
-                electronics = Product.objects.filter(category="E").all()
-                mydict = {'username': username, 'products':products}
+                accessories = Product.objects.filter(category="A").all()
+                mydict = {'username': username, 'products':products, 'accessories': accessories}
                 html_template = 'users/welcome_email_3.html' #Changed it from users/welcome_email.html to welcome_email_3.html
                 html_message = render_to_string(html_template, context=mydict)
                 subject = 'Welcome to Service-Verse'
@@ -63,7 +63,7 @@ def register2(request):
                 message.content_subtype = 'html'
                 message.send()
                 messages.success(request, f"Hi {username}, your account has been created succesfully!")
-                return redirect('/')
+                return redirect('login')
         else:
             messages.info(request, "Both password fields didn't match")
             return redirect("/")
