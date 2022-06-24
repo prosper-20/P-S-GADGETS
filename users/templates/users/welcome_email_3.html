@@ -7,7 +7,7 @@
   <meta name="x-apple-disable-message-reformatting"> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
   <meta content="telephone=no" name="format-detection"> 
-  <title>New email template 2022-06-24</title><!--[if (mso 16)]>
+  <title>Welcome Email | P's Gadgets</title><!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
@@ -206,7 +206,7 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:271px"> 
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;border-width:1px;border-style:solid;border-color:#efefef;background-color:#ffffff;background-position:left center" bgcolor="#ffffff" role="presentation"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="center" style="padding:0;Margin:0;font-size:0"><a target="_blank" href="https://www.amazon.com/MSBASIC-Dress-Ruched-Draped-Dresses/dp/B07S6S6T8Y?ref_=w_bl_sl_ap_ap_web_13594166011&th=1" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img class="adapt-img img-1" src="{{ proudct.image.url }}" alt="MSBASIC Womens Deep V Neck Dress Short Sleeve Ruched Draped Party Dress" title="" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;background:url('https://stripo.email/static//assets/img/default-img-back.png') 50% center no-repeat #f9f9f9;box-shadow:#eeeeee 0px 0px 0px 1px inset" height="265"></a></td> 
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><a target="_blank" href="{{ product.get_absolute_url }}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img class="adapt-img img-1" src="{{ product.image.url }}" alt="{{ product.slug }}" title="{{ product.slug }}" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;background:url('https://stripo.email/static//assets/img/default-img-back.png') 50% center no-repeat #f9f9f9;box-shadow:#eeeeee 0px 0px 0px 1px inset" height="265"></a></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="left" class="es-m-txt-l" style="Margin:0;padding-bottom:5px;padding-top:10px;padding-left:15px;padding-right:15px"><h3 style="Margin:0;line-height:17px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;font-style:normal;font-weight:bold;color:#0066c0">{{ product.title }}</h3></td> 
@@ -215,7 +215,7 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:0;Margin:0;padding-left:15px;padding-right:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><span class="star" style="color:#DAA520">★★★★☆</span></p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" style="padding:0;Margin:0;padding-left:15px;padding-right:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;color:#cc0000;font-size:16px" class="price">${{ product.price }}</p></td> 
+                      <td align="left" style="padding:0;Margin:0;padding-left:15px;padding-right:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;color:#cc0000;font-size:16px" class="price"><span>&#8358;</span>{{ product.price }}</p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="center" style="padding:10px;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:#FFA724;background:#FFA724;border-width:0px;display:inline-block;border-radius:0px;width:auto"><a href="https://www.amazon.com/MSBASIC-Dress-Ruched-Draped-Dresses/dp/B07S6S6T8Y?ref_=w_bl_sl_ap_ap_web_13594166011&th=1" class="es-button es-button-1656087847911" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#010101;font-size:15px;border-style:solid;border-color:#FFA724;border-width:10px 60px;display:inline-block;background:#FFA724;border-radius:0px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:18px;width:auto;text-align:center">Buy On Amazon </a></span></td> 
@@ -224,21 +224,22 @@ a[x-apple-data-detectors] {
                  </tr> 
                </table><!--[if mso]></td><td style="width:20px"></td><td style="width:269px" valign="top"><![endif]--> 
                 {% endfor %}
+                {% for product in products2 %}
                <table cellpadding="0" cellspacing="0" class="es-right" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right"> 
                  <tr style="border-collapse:collapse"> 
                   <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:269px"> 
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;border-width:1px;border-style:solid;border-color:#efefef;background-color:#ffffff;background-position:left center" bgcolor="#ffffff" role="presentation"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="center" style="padding:0;Margin:0;font-size:0"><a target="_blank" href="https://www.amazon.com/Womens-Floral-Cocktail-Bodycon-Dresses/dp/B07Q4BFW18/ref=pd_sbs_193_4/131-9574354-0278912?_encoding=UTF8&pd_rd_i=B07Q4T44N1&pd_rd_r=03afb5eb-9aa7-4e18-879c-c81409f5e076&pd_rd_w=xJqdi&pd_rd_wg=XPjzs&pf_rd_p=43281256-7633-49c8-b909-7ffd7d8cb21e&pf_rd_r=1095T40QVMTDY5NSH63E&psc=1&refRID=1095T40QVMTDY5NSH63E" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img class="adapt-img img-1" src="images/58131565164172686.jpg" alt="Womens Floral Ruffle V-Neck Ruched Tulip Cocktail Bodycon Dresses" title="Womens Floral Ruffle V-Neck Ruched Tulip Cocktail Bodycon Dresses" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;background:url('https://stripo.email/static//assets/img/default-img-back.png') 50% center no-repeat #f9f9f9;box-shadow:#eeeeee 0px 0px 0px 1px inset" height="265"></a></td> 
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><a target="_blank" href="https://www.amazon.com/Womens-Floral-Cocktail-Bodycon-Dresses/dp/B07Q4BFW18/ref=pd_sbs_193_4/131-9574354-0278912?_encoding=UTF8&pd_rd_i=B07Q4T44N1&pd_rd_r=03afb5eb-9aa7-4e18-879c-c81409f5e076&pd_rd_w=xJqdi&pd_rd_wg=XPjzs&pf_rd_p=43281256-7633-49c8-b909-7ffd7d8cb21e&pf_rd_r=1095T40QVMTDY5NSH63E&psc=1&refRID=1095T40QVMTDY5NSH63E" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img class="adapt-img img-1" src="{{ product.image.url }}" alt="{{ product.slug }}" title="{{ product.slug }}" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;background:url('https://stripo.email/static//assets/img/default-img-back.png') 50% center no-repeat #f9f9f9;box-shadow:#eeeeee 0px 0px 0px 1px inset" height="265"></a></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" class="es-m-txt-l" style="Margin:0;padding-bottom:5px;padding-top:10px;padding-left:15px;padding-right:15px"><h3 style="Margin:0;line-height:17px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;font-style:normal;font-weight:bold;color:#0066c0">Womens Floral Ruffle V-Neck Ruched Tulip Cocktail Bodycon Dresses</h3></td> 
+                      <td align="left" class="es-m-txt-l" style="Margin:0;padding-bottom:5px;padding-top:10px;padding-left:15px;padding-right:15px"><h3 style="Margin:0;line-height:17px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;font-style:normal;font-weight:bold;color:#0066c0">{{ product.title }}</h3></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="left" style="padding:0;Margin:0;padding-left:15px;padding-right:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><span class="star" style="color:#DAA520">★★★★★</span></p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" style="padding:0;Margin:0;padding-left:15px;padding-right:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;color:#cc0000;font-size:16px" class="price">$22.99</p></td> 
+                      <td align="left" style="padding:0;Margin:0;padding-left:15px;padding-right:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:24px;color:#cc0000;font-size:16px" class="price"><span>&#8358;</span>{{ product.price }}</p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="center" style="padding:10px;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:#FFA724;background:#FFA724;border-width:0px;display:inline-block;border-radius:0px;width:auto"><a href="https://www.amazon.com/Womens-Floral-Cocktail-Bodycon-Dresses/dp/B07Q4BFW18/ref=pd_sbs_193_4/131-9574354-0278912?_encoding=UTF8&pd_rd_i=B07Q4T44N1&pd_rd_r=03afb5eb-9aa7-4e18-879c-c81409f5e076&pd_rd_w=xJqdi&pd_rd_wg=XPjzs&pf_rd_p=43281256-7633-49c8-b909-7ffd7d8cb21e&pf_rd_r=1095T40QVMTDY5NSH63E&psc=1&refRID=1095T40QVMTDY5NSH63E" class="es-button es-button-1656087847919" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#010101;font-size:15px;border-style:solid;border-color:#FFA724;border-width:10px 60px;display:inline-block;background:#FFA724;border-radius:0px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:18px;width:auto;text-align:center">Buy On Amazon </a></span></td> 
@@ -246,6 +247,7 @@ a[x-apple-data-detectors] {
                    </table></td> 
                  </tr> 
                </table><!--[if mso]></td></tr></table><![endif]--></td> 
+               {% endfor %}
              </tr> 
              <tr style="border-collapse:collapse"> 
               <td align="left" bgcolor="transparent" style="Margin:0;padding-top:10px;padding-bottom:15px;padding-left:20px;padding-right:20px;background-color:transparent;background-position:left center"><!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:271px" valign="top"><![endif]--> 
@@ -326,8 +328,8 @@ a[x-apple-data-detectors] {
                  </tr> 
                </table><!--[if mso]></td></tr></table><![endif]--></td> 
              </tr> 
-             <tr style="border-collapse:collapse"> 
-              <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:183px" valign="top"><![endif]--> 
+             <!-- <tr style="border-collapse:collapse"> 
+              <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:183px" valign="top"><![endif]
                <table cellpadding="0" cellspacing="0" class="es-left" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
                  <tr style="border-collapse:collapse"> 
                   <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:183px"> 
@@ -337,7 +339,7 @@ a[x-apple-data-detectors] {
                      </tr> 
                    </table></td> 
                  </tr> 
-               </table><!--[if mso]></td><td style="width:10px"></td><td style="width:367px" valign="top"><![endif]--> 
+               </table>[if mso]></td><td style="width:10px"></td><td style="width:367px" valign="top"><![endif]
                <table cellpadding="0" cellspacing="0" class="es-right" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right"> 
                  <tr style="border-collapse:collapse"> 
                   <td align="left" style="padding:0;Margin:0;width:367px"> 
@@ -356,8 +358,8 @@ a[x-apple-data-detectors] {
                      </tr> 
                    </table></td> 
                  </tr> 
-               </table><!--[if mso]></td></tr></table><![endif]--></td> 
-             </tr> 
+               </table>[if mso]></td></tr></table><![endif]</td> 
+             </tr>  -->
              <tr style="border-collapse:collapse"> 
               <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px"> 
                <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
