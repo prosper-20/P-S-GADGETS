@@ -8,6 +8,7 @@ from django.core.mail import EmailMessage, send_mail
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage, send_mail
 from sendgrid.helpers.mail import SandBoxMode, MailSettings
+from store.models import Product
 
 # Create your views here.
 
@@ -49,7 +50,8 @@ def register2(request):
                     )
                 user.save()
                 # For sending mails
-                mydict = {'username': username}
+                products = Product.objects.filter(type="F")[:4]
+                mydict = {'username': username, 'products':products}
                 html_template = 'users/welcome_email.html'
                 html_message = render_to_string(html_template, context=mydict)
                 subject = 'Welcome to Service-Verse'
