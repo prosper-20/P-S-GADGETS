@@ -35,6 +35,7 @@ from .views import (
     post_detail,
 
 )
+from users import views as user_views
 
 urlpatterns = [
     # path("", views.Home.as_view(), name="home"),
@@ -66,5 +67,6 @@ urlpatterns = [
     path("contact-us/", contact, name="contact"),
     path('faq/', question, name="faq"), #Changed the function view from faq to question
     path('faq/<slug:slug>/', QuestionDetail, name="faq_detail"),
-    path("product/<slug:slug>/tester/", post_detail, name="comment_tester")
+    path("product/<slug:slug>/tester/", post_detail, name="comment_tester"),
+    path('profile/', user_views.profile, name='profile'),
 ]
