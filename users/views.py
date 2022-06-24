@@ -52,7 +52,7 @@ def register2(request):
                 # For sending mails
                 products = Product.objects.filter(type="F")[:4]
                 mydict = {'username': username, 'products':products}
-                html_template = 'users/welcome_email.html'
+                html_template = 'users/welcome_email_3.html' #Changed it from users/welcome_email.html to welcome_email_3.html
                 html_message = render_to_string(html_template, context=mydict)
                 subject = 'Welcome to Service-Verse'
                 email_from = settings.EMAIL_HOST_USER
