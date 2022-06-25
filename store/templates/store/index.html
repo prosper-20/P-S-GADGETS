@@ -52,7 +52,7 @@
 		{% if request.user.is_authenticated %}
 		<span class="btn btn-mini"><span>&#8358;</span>****.**</span>
 		<a href="{% url 'order-summary' %}"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> {{ request.user|cart_item_count }} Item(s) in your cart </span> </a>
-		<a href="{% url 'account_logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
+		<a href="{% url 'logout' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Logout</span> </a>
 		{% else %} 
 		<span class="btn btn-mini"><span>&#8358;</span>0</span>
 		<a href="{% url 'login' %}"><span class="btn btn-mini btn-primary"><i class="icon-user icon-white"></i>Login</span> </a>

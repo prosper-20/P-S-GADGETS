@@ -90,6 +90,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
+    messages.success(request, 'See you soon!')
     return redirect("/")
 
 
