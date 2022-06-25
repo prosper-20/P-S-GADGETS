@@ -21,6 +21,19 @@
 					<h2 class="heading-section">P's Gadgets | Sign In</h2>
 				</div>
 			</div>
+			<div class="mt-5 pt-3">
+				{% if messages %}
+				  {% for message in messages %}
+					<div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
+					  <i class="fas fa-info-circle me-3"></i>
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				  {% endfor %}
+				{% endif %}
+			  </div>
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
 					<div class="login-wrap">
