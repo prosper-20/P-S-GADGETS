@@ -57,7 +57,7 @@ def register2(request):
                 mydict = {'username': username, 'products':products, 'accessories': accessories}
                 html_template = 'users/welcome_4.html' #Changed it from users/welcome_email.html to welcome_email_3.html
                 html_message = render_to_string(html_template, context=mydict)
-                subject = "P's Gadgets"
+                subject = "Welcome!!! P's Gadgets"
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [email]
                 message = EmailMessage(subject, html_message,
