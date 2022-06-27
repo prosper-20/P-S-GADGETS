@@ -36,15 +36,19 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
+	{% if request.user.is_authenticated %}
+	<div class="span6">Welcome!<strong> {{ user.username|title }}</strong></div>
+	{% else %}
 	<div class="span6">Welcome!<strong> User</strong></div>
+	{% endif %}
 	<div class="span6">
 	<div class="pull-right">
 		<!-- <a href="product_summary.html"><span class="">Fr</span></a>
 		<a href="product_summary.html"><span class="">Es</span></a> -->
 		<span class="btn btn-mini">En</span>
 		<!-- <a href="product_summary.html"><span>&pound;</span></a> -->
-		<span class="btn btn-mini"><span>&#8358;</span>155.00</span>
-		<a href="product_summary.html"><span>&#8358;</span></a>
+		<span class="btn btn-mini"><span>&#8358;</span>****.**</span>
+		<!-- <a href="product_summary.html"><span>&#8358;</span></a> -->
 		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
 	</div>
 	</div>
@@ -75,7 +79,7 @@
 	 <li class=""><a href="{% url 'normal' %}">Delivery</a></li>
 	 <li class=""><a href="contact.html">Contact</a></li>
 	 <li class="">
-	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+	 <a href="{% url 'login' %}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-primary">Login</span></a>
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -186,27 +190,27 @@
 </p>
 <h5>Why Does It Takes So Long To Get My Package from the Nigeria Postal service?</h5><br/>
 <p>
-Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
+	Items shipped through Nigeria Postal shipping are shipped via the postal network to get you the most economical shipping charges and hence takes longer.
 </p>
-<h5>Lorem ipsum dolor sit amet</h5><br/>
+<h5>Why Is P's Gadgets Not Delivering My Package?</h5><br/>
 <p>
-Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
+	Nigeria Postal Shipping offers our customers the choice of low cost shipping which is offered through the local postal network and not by Jumia.
 	</p>
-	<h5>Lorem ipsum dolor sit amet</h5><br/>
+	<h5>What is the International Shipping and customs Fee</h5><br/>
 <p>
-Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
+	This fee is your contribution to have this item shipped from an overseas country directly to your doorstep. It includes international air freight charges, customs duties, taxes and clearance fees.
 </p>
-<h5>Lorem ipsum dolor sit amet</h5><br/>
+<h5>What is Nigeria Postal Service?</h5><br/>
 <p>
-Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
+	The Nigeria Postal Service option offers you a cheaper shipping fee The deliveries will be handled by the Nigeria local post office and will be slower than other shipping methods. For Nigeria Postal Service timelines click here
 	</p>
-	<h5>Lorem ipsum dolor sit amet</h5><br/>
+	<h5>What products are eligible for Nigeria Postal Service?</h5><br/>
 <p>
-Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
+	Some Jumia Global products are eligible for Nigeria Postal Service based on product value and seller ability to deliver through this channel
 </p>
-<h5>Lorem ipsum dolor sit amet</h5><br/>
+<h5>Where does P's Gadgets Global products come from?</h5><br/>
 <p>
-Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
+	All of our products come from trusted suppliers located across the world. Main origins include Dubai, China and Turkey
 	</p>
 </div>
 </div></div>

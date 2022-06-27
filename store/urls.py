@@ -70,5 +70,5 @@ urlpatterns = [
     path('faq/<slug:slug>/', QuestionDetail, name="faq_detail"),
     path("product/<slug:slug>/tester/", post_detail, name="comment_tester"),
     path('profile/', user_views.profile, name='profile'),
-    path('normal/', normal, name="normal")
+    path('delivery/', normal, name="normal")
 ]
