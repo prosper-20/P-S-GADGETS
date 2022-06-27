@@ -33,6 +33,7 @@ from .views import (
     search_questions,
 
     post_detail,
+    normal
 
 )
 from users import views as user_views
@@ -69,4 +70,5 @@ urlpatterns = [
     path('faq/<slug:slug>/', QuestionDetail, name="faq_detail"),
     path("product/<slug:slug>/tester/", post_detail, name="comment_tester"),
     path('profile/', user_views.profile, name='profile'),
+    path('normal/', normal, name="normal")
 ]

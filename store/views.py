@@ -876,3 +876,7 @@ def post_detail(request, slug):
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
 
+
+def normal(request):
+    return render(request, 'store/normal.html')
+
