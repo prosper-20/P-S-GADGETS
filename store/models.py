@@ -4,6 +4,7 @@ from django.db import models
 from django.urls import reverse
 from django.db.models.signals import post_save
 from django_countries.fields import CountryField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -51,7 +52,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=250, blank=True, null=True)
-    features = models.TextField(blank=True, null=True)
+    features = RichTextField(blank=True, null=True)
     stock = models.IntegerField(default=100)
     released_on = models.CharField(max_length=100)
     dimensions = models.CharField(max_length=100)

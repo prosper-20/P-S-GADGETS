@@ -46,7 +46,8 @@ INSTALLED_APPS = [
 	'django_countries',
 	'crispy_forms',
 	'users.apps.UsersConfig',
-	'rest_framework'
+	'rest_framework',
+	'ckeditor'
 
 ]
 
